@@ -464,7 +464,9 @@ function CloseForm() {
 function transfer(url) {
     window.location.href = url;
   }
-
+function transfer_root(path) {
+    window.location.href = '/' + path;
+}
     }
 {
 

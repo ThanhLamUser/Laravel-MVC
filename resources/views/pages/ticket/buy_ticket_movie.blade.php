@@ -641,7 +641,7 @@
                                 </p>
                             </div>
 
-                            <button type="submit" class="sticky-info--buy-ticket" onclick="transfer('checkout')">
+                            <button type="submit" class="sticky-info--buy-ticket" onclick="transfer_root('checkout')">
 
                                 <p>Buy ticket(s)</p>
                             </button>
