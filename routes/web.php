@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\HomeController@index');
 Route::get('/homepage', 'App\Http\Controllers\HomeController@index');
 Route::get('/now-showing', 'App\Http\Controllers\HomeController@now_showing');
-// Route::get('/buy-ticket', 'App\Http\Controllers\HomeController@buy_ticket');
 Route::get('/coming-soon', 'App\Http\Controllers\HomeController@coming_soon');
 Route::get('/theater', 'App\Http\Controllers\HomeController@theater');
 Route::get('/checkout', 'App\Http\Controllers\HomeController@checkout');
@@ -17,6 +16,8 @@ Route::get('/about-us', 'App\Http\Controllers\HomeController@about_us');
 // Fronted detail
 Route::get('/buy-ticket/{movie_id}', 'App\Http\Controllers\HomeController@buy_ticket_movie');
 
+//Checkout
+Route::post('/save-checkout-list','App\Http\Controllers\CheckOutController@save_checkout_list');
 
 
 // Backend

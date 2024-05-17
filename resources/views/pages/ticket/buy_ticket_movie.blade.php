@@ -350,7 +350,8 @@
                         </div>
                     </div>
                 </div>
-
+            <form role="form" id="form1" action="{{ URL::to('/save-checkout-list') }}" onsubmit="return checkSeatsAndProceed()" method="post" enctype="multipart/form-data">
+                {{ csrf_field() }}
                 <div class="select-ticket col l-12 m-12 c-12" style="display: none">
                     <div class="row sm-gutter">
                         <div class="select-ticket--container col l-12 m-4 c-6">
@@ -370,7 +371,7 @@
                                                     d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z" />
                                             </svg>
                                         </div>
-                                        <input type="number" step="1" value="0" name="quantity" data-value="{{ $ticket->ticket_type }}" readonly
+                                        <input type="number" step="1" value="0" name="quantity{{ $ticket->ticket_id  }}" data-value="{{ $ticket->ticket_type }}" readonly
                                             id="quantity-field{{$ticket->ticket_id}}" data-value1="{{ $ticket->ticket_price  }}">
                                         <div class="plus-btn"
                                             onclick="checkTicketAmount('quantity-field{{$ticket->ticket_id}}')">
@@ -579,7 +580,7 @@
                                                         </svg>
                                                     </div>
                                                     <input readonly value="0"
-                                                        id="popcorn-combo-{{ $key + 1 }}" data-value1="{{ $popcorndrink->popcorndrink_price }}">
+                                                        id="popcorn-combo-{{ $key + 1 }}"name="popcorn_combo_{{ $key + 1 }}" data-value1="{{ $popcorndrink->popcorndrink_price }}">
                                                     <div class="plus-btn"
                                                         onclick="increaseQuantity('popcorn-combo-{{ $key + 1 }}')">
                                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -610,6 +611,7 @@
 
                                 <div class="sticky-info--movie">
                                     <p>{{ $movie_pro->movie_name }}</p>
+                                    <input type="hidden" value="{{ $movie_pro->movie_id }}" name="movie_hidden">
                             @endforeach
                             <p id="movie-type">-</p>
                             @foreach ($movie_by_id as $key => $movie_pro)
@@ -621,8 +623,13 @@
                             <p>
                                 <span id="movie-screen">-</span> |
                                 <span id="movie-time">-</span> |
-                                <span id="movie-date">-</span>
+                                <span id="movie-date" >-</span>
                             </p>
+                            <input type="hidden" name="movie_seats" value="">
+                            <input type="hidden" name="movie_seats_couple" value="">
+                            <input type="hidden" name="movie_screen" value="">
+                            <input type="hidden" name="movie_time" value="">
+                            <input type="hidden" name="movie_date" value="">
                         </div>
                     </div>
 
@@ -639,9 +646,10 @@
                                     <span id="temp-price-calc">0</span>
                                     <span>đ</span>
                                 </p>
+                                <input type="hidden" name="temp_price_calc" value="">
                             </div>
 
-                            <button type="submit" class="sticky-info--buy-ticket" onclick="transfer_root('checkout')">
+                            <button type="submit" class="sticky-info--buy-ticket">
 
                                 <p>Buy ticket(s)</p>
                             </button>
@@ -650,6 +658,7 @@
                 </div>
             </div>
         </div>
+    </form>
     </div>
 @endsection
 
