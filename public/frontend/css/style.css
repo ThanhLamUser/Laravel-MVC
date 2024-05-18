@@ -2914,6 +2914,7 @@
 
 .account_text{
     text-align: center;
+    font-weight: 600;
 }
 
 .account_container-form--group-login{
@@ -3030,6 +3031,7 @@
 
 .account_container-header-register{
     text-align: center;
+    font-size: 2.4rem;
 }
 
 
@@ -3975,3 +3977,7 @@
     font-size: 1.4rem;
     width: 100%;
   }
+.logo_img{
+    width: 120.44px;
+    height: 120.44px;
+}

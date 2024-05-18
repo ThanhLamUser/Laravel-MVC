@@ -430,7 +430,7 @@ function LoginForm() {
         <div class="modal_body">
             <div class="login">
                 <div class="logo hide-on-mobile">
-                    <img src="../img/image-removebg-preview (2).png" alt="" class="logo_img">
+                    <img src="./public/frontend/images/cinova-logo.png" alt="" class="logo_img">
                 </div>
                 <div class="account">
                     <div class="account_container">
@@ -484,9 +484,6 @@ function RegisterForm(){
     </div>
     <div class="modal_body">
         <div class="register">
-            <div class="logo hide-on-mobile">
-                <img src="../img/image-removebg-preview (2).png" alt="" class="logo_img">
-            </div>
             <div class="account">
                 <div class="account_container">
                     <h2 class="account_container-header-register">Create your account</h2>
@@ -520,6 +517,9 @@ function RegisterForm(){
                             <a href="#" onclick="LoginForm()">Login</a></p>
                     </form>
                 </div>
+            </div>
+            <div class="logo hide-on-mobile">
+                <img src="./public/frontend/images/cinova-logo.png" alt="" class="logo_img">
             </div>
         </div>
     </div>`

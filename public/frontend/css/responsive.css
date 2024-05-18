@@ -667,4 +667,37 @@ l - pc */
 
 }
 
+@media (min-width:740px){
+    .hide-on-mobile{
+        display: none;
+    }
+
+    @keyframes slideRight {
+        0% {
+            transform: translateX(-50%); /* Di chuyển sang trái ngoài màn hình */
+        }
+        100% {
+            transform: translateX(-50%); /* Di chuyển về vị trí ban đầu */
+        }
+    }
+
+    .login{
+        width: 480px;
+        background-color: unset;
+
+    }
+    .register{
+        width: 480px;
+        background-color: unset;
+
+    }
+
+    .account {
+        border-radius: 0;
+    }
+    .form_group:nth-child(2){
+        margin-left: 12px;
+    }
+
+}
 

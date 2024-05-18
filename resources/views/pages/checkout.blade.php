@@ -147,6 +147,7 @@
                 </table>
               </p>
               <p>
+                <?php if ($quantity_popcorn1 != 0 || $quantity_popcorn2 != 0 || $quantity_popcorn2 != 0  ){ ?>
                 <table id="cd-popcorn">
                   <tr>
                     <td style="padding-right: 18px;">Popcorn Combo</td>
@@ -183,6 +184,9 @@
                 }
                 ?>
                 </table>
+                <?php
+                }
+                ?>
               </p>
               <div class="cd-total">
                 <h1>TOTAL</h1>
