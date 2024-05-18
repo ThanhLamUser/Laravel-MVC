@@ -58,6 +58,46 @@
             <div class="cd-receipt">
                 @foreach ( $list_movie as $key => $movie)
               <h1 id="cd-movie-name">{{ $movie->movie_name }}</h1>
+              <p style="font-size: 1.6rem;
+              font-weight: 500;
+              margin-bottom: 14px; color:#bdb431">
+              <?php
+              if($movie->movie_age == 'P'){
+              ?>
+              The film is allowed to be popular with viewers of all ages
+              <?php
+              }
+              ?>
+              <?php
+              if($movie->movie_age == 'T13'){
+              ?>
+              The film is popular with viewers aged 13 and over (13+)
+              <?php
+              }
+              ?>
+                <?php
+                if($movie->movie_age == 'T16'){
+                ?>
+                The film is popular with viewers aged 16 years and older (16+)
+                <?php
+                }
+                ?>
+                <?php
+                if($movie->movie_age == 'T18'){
+                ?>
+                The film is popular with viewers aged 18 years or older (18+)
+                <?php
+                }
+                ?>
+                <?php
+                if($movie->movie_age == 'K'){
+                ?>
+                The film is intended for viewers under 13 years old and is accompanied by a guardian
+                <?php
+                }
+                ?>
+              </p>
+
               @endforeach
               <span>TICKET HOLDING TIME:</span>
               <span id="cd-timer">05:00</span>
@@ -68,15 +108,15 @@
               <p>
                 <table id="cd-guest-info">
                   <tr>
-                    <td>Room</td>
-                    <td>Amount</td>
-                    <td>Type</td>
-                    <td>Seat Number</td>
-                  </tr>
+                    <td style="padding-right: 18px;">Room</td>
+                    <td style="padding-right: 18px;">Amount</td>
+                    <td style="padding-right: 18px;">Type</td>
+                    <td style="padding-right: 18px;">Seat Number</td>
+                  </tr >
                   <?php
                     if ($quantity_ticket1 != 0 || $quantity_ticket2 != 0 ){
                   ?>
-                      <tr>
+                      <tr style="font-size: 1.4rem;">
                         <td>{{ $movie_screen }}</td>
                         <td> <?php if ($quantity_ticket1 != 0 ){ ?>
                           {{ $quantity_ticket1 }} Student
@@ -94,7 +134,7 @@
                   <?php
                     if ($quantity_ticket3 != 0){
                   ?>
-                      <tr>
+                      <tr style="font-size: 1.4rem;">
                         <td>{{ $movie_screen }}</td>
                         <td>{{ $quantity_ticket3 }} Adult</td>
                         <td>Couple</td>
@@ -109,10 +149,10 @@
               <p>
                 <table id="cd-popcorn">
                   <tr>
-                    <td>Popcorn Combo</td>
-                    <td>Quantity</td>
+                    <td style="padding-right: 18px;">Popcorn Combo</td>
+                    <td style="padding-right: 18px;">Quantity</td>
                   </tr>
-                  <tr>
+                  <tr style="font-size: 1.4rem;">
                     <?php
                     if ($quantity_popcorn1 != 0  ){
                   ?>
@@ -122,7 +162,7 @@
                   <?php
                 }
                 ?>
-                 <tr>
+                 <tr style="font-size: 1.4rem;">
                     <?php
                     if ($quantity_popcorn2 != 0  ){
                   ?>
@@ -132,7 +172,7 @@
                   <?php
                 }
                 ?>
-                 <tr>
+                 <tr style="font-size: 1.4rem;">
                     <?php
                     if ($quantity_popcorn3 != 0  ){
                   ?>

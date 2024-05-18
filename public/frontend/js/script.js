@@ -20,6 +20,9 @@
         }
         updateTicketAmount();
         UpdatetoggleFocusCSS();
+        if (selectedSeats!=0  && ticketAmount !=0) {
+            window.location.reload()
+        }
     }
 
     function incrByOne(fieldId) {
@@ -223,6 +226,37 @@
                 }
             }
         }
+
+        window.onload = function() {
+            var timerElement = document.getElementById('cd-timer');
+            var timeLeft = 300; // 5 minutes in seconds
+
+            function updateTimer() {
+                var minutes = Math.floor(timeLeft / 60);
+                var seconds = timeLeft % 60;
+
+                // Add leading zero if seconds less than 10
+                if (seconds < 10) {
+                    seconds = '0' + seconds;
+                }
+
+                timerElement.textContent = minutes + ':' + seconds;
+
+                if (timeLeft > 0) {
+                    timeLeft--;
+                } else {
+                    alert('Time Out!');
+                    window.history.back();
+                    clearInterval(timerInterval);
+                }
+            }
+
+            // Initial call to display the starting time
+            updateTimer();
+
+            // Update the timer every 1 second
+            var timerInterval = setInterval(updateTimer, 1000);
+        };
 
         function toggleSeatAndStartCountdown(seatId) {
             toggleFocusCSS(document.getElementById(seatId));

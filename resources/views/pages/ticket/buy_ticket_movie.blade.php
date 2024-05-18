@@ -649,7 +649,7 @@
                                 <input type="hidden" name="temp_price_calc" value="">
                             </div>
 
-                            <button type="submit" class="sticky-info--buy-ticket">
+                            <button type="submit" class="sticky-info--buy-ticket" onclick="startCountdownCheckOut()">
 
                                 <p>Buy ticket(s)</p>
                             </button>
