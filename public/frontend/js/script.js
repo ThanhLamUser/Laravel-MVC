@@ -108,6 +108,7 @@
         var choose_seat = document.querySelector('.choose-seat--container.col.l-12.m-4.c-6');
         var popcorn = document.querySelector('.buy-popcorn.col.l-12.m-12.c-12');
         var movie = document.querySelector('.movie-info--hours-option.movie-info--hours-option-focus');
+        var schedule = document.querySelector('.movie-info--date');
 
         if(fieldId=='no_schedule'){
             element.style.display = 'none';
@@ -117,7 +118,17 @@
             choose_seat.style.display = 'none'
             popcorn.style.display = 'none'
             movie.classList.remove('movie-info--hours-option-focus');
-        }else {
+        }
+        else if(!schedule.classList.contains('.movie-info--option-active')){
+            element.style.display = 'block';
+            stickyInfo.style.display ='none'
+            seat.style.display = 'none'
+            ticket.style.display ='none'
+            choose_seat.style.display = 'none'
+            popcorn.style.display = 'none'
+            movie.classList.remove('movie-info--hours-option-focus');
+        }
+        else {
             element.style.display = 'block';
         }
     }
@@ -524,11 +535,7 @@
 //         document.getElementById('login_register_form').innerHTML = login_form;
 //     }
 
-//     function CloseForm() {
-//         var modalOverlay = document.querySelector('.modal_overlay');
-//         var modal = modalOverlay.closest('.modal');
-//         modal.style.display = 'none';
-//     }
+
 //     window.RegisterForm = RegisterForm;
 //     window.CloseForm = CloseForm;
 //     window.LoginForm = LoginForm;
@@ -560,4 +567,22 @@ function transfer_root(path) {
         }
       });
 
+}
+{
+    function PlayTrailer(){
+        var register_form = `<div class="modal">
+        <div class="modal_overlay" onclick="CloseForm()">
+        </div>
+        <div class="modal_body">
+        <iframe width="936px" height="527px" src="https://www.youtube.com/embed/J-1z1nQGS_k?si=l7hLBlAsPaf8jF-E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+       </div>
+        </div>`;
+        document.getElementById('login_register_form').innerHTML= register_form;
+    }
+
+    function CloseForm() {
+        var modalOverlay = document.querySelector('.modal_overlay');
+        var modal = modalOverlay.closest('.modal');
+        modal.style.display = 'none';
+    }
 }

@@ -16,7 +16,7 @@
                 <div class="theater_schedule">
                     <div class="theater_name">
                         <img src="../img/Screenshot 2024-04-14 171059.png" alt="">
-                        <h1>CGV Giga Mall Thủ Đức</h1>
+                        <h1>CINOVA CINEMA</h1>
                         <img src="../img/Screenshot 2024-04-14 171059.png" alt="">
                     </div>
                     <div class="schedule">
@@ -24,15 +24,15 @@
                             <img class="img_theater" src="https://iguov8nhvyobj.vcdn.cloud/media/site/cache/1/980x415/b58515f018eb873dafa430b6f9ae0c1e/r/s/rsz_1181115_-_cgv_gigamall_page_05.jpg" alt="">
                             <div class="theater_detail">
                                 <div class="theater_text">
-                                    <p class="theater_detail-location">Tầng 6 TTTM GIGAMALL, 240-242 Phạm Văn Đồng, P.Hiệp Bình Chánh, Q.Thủ Đức, TPHCM</p>
+                                    <p class="theater_detail-location">Hàn Thuyên Street, Neighborhood 6, Linh Trung Ward, Thủ Đức District, Ho Chi Minh City</p>
                                     <p class="theater_detail-fax">Fax: 09221145</p>
-                                    <p class="theater_detail-hotline">Hotline: 0742211845</p>
+                                    <p class="theater_detail-hotline">Hotline: 0123 456789</p>
                                 </div>
                                 <div class="vertical_line"></div>
                                 <div class="theater_btn">
                                     <button class="red_button red_button-map" onclick="transfer('https://maps.app.goo.gl/1j8J93R1Pr9xbEoQ9')">
-                                      Xem bản đồ</button>
-                                    <button class="red_button" onclick="transfer('contact-us')">Liên hệ CGV</button>
+                                      Map</button>
+                                    <button class="red_button" onclick="transfer('contact-us')">Contact</button>
                                 </div>
                             </div>
                             <div class="schedule_time">

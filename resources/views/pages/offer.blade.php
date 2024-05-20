@@ -56,7 +56,7 @@
                         </ul>
                     </p>
 
-                    <button>BUY TICKETS NOW</button>
+                    <button onclick="transfer('now-showing')">BUY TICKETS NOW</button>
                 </div>
 
                 <img src="https://api-website.cinestar.com.vn/media/.renditions/wysiwyg/CMSPage/Promotions/c_student.png" alt="" class="offer-img">
@@ -84,7 +84,7 @@
                         </ul>
                     </p>
 
-                    <button>BUY TICKETS NOW</button>
+                    <button onclick="transfer('now-showing')">BUY TICKETS NOW</button>
                 </div>
 
                 <img src="https://api-website.cinestar.com.vn/media/.renditions/wysiwyg/CMSPage/Promotions/C_TEN.png" alt="" class="offer-img">
@@ -112,7 +112,7 @@
                         </ul>
                     </p>
 
-                    <button>BUY TICKETS NOW</button>
+                    <button onclick="transfer('now-showing')">BUY TICKETS NOW</button>
                 </div>
 
                 <img src="https://api-website.cinestar.com.vn/media/.renditions/wysiwyg/CMSPage/Member/monday_1_.jpg" alt="" class="offer-img">
@@ -141,7 +141,7 @@
                         </ul>
                     </p>
 
-                    <button>BUY TICKETS NOW</button>
+                    <button onclick="transfer('now-showing')">BUY TICKETS NOW</button>
                 </div>
 
                 <img src="https://api-website.cinestar.com.vn/media/.renditions/wysiwyg/CMSPage/Promotions/C_MEMBER.png" alt="" class="offer-img">
@@ -168,7 +168,7 @@
                         </ul>
                     </p>
 
-                    <button>BUY TICKETS NOW</button>
+                    <button onclick="transfer('now-showing')"> BUY TICKETS NOW</button>
                 </div>
 
                 <img src="https://api-website.cinestar.com.vn/media/.renditions/wysiwyg/CMSPage/Promotions/c_student.png" alt="" class="offer-img">

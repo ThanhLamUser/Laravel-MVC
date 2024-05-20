@@ -28,6 +28,7 @@
                 <h1>Contact Details</h1>
                 <h4>(*): Field must be filled</h4>
               </div>
+              <form action="">
               <div class="cd-input-field--div cd-input-field--email">
                 <p>Name <span>*</span></p>
                 <input type="text" class="cd-input cd-email" name="ticketbooked_name">
@@ -45,6 +46,7 @@
               <div class="cd-input-field--proceed">
                 <button>PROCEED</button>
               </div>
+            </form>
             </div>
 
             <div class="cd-receipt">
