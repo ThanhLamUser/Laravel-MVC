@@ -146,7 +146,7 @@
                     <a href="{{URL::to('/theater')}}" class="header-list--option">THEATERS</a>
                   </li>
                   <li class="header-list">
-                    <a href="" class="header-list--option">OFFERS</a>
+                    <a href="{{URL::to('/offer')}}" class="header-list--option">OFFERS</a>
                   </li>
                   <li class="header-list">
                     <a href="{{URL::to('/contact-us')}}" class="header-list--option">CONTACT</a>
@@ -187,13 +187,29 @@
               </div>
 
               <div class="header-authorize hide-on-m">
-                <div class="header-login">
-                  <a href="#" class="header-login-link" onclick="LoginForm()">Login</a>
-                </div>
+                <?php
+                    $user_id = Session::get('user_id');
+                    if($user_id!=NULL){
+                ?>
 
-                <div class="header-signup">
-                  <a href="#" class="header-signup-link" onclick="RegisterForm()">Sign Up</a>
+                <div class="header-login">
+                    <a href="{{ URL::to('/customer') }}" class="header-login-link" > <?php echo $user_name = Session::get('user_name');  ?></a>
                 </div>
+                 <div class="header-login">
+                    <a href="{{ URL::to('/logout') }}" class="header-login-link" >Logout</a>
+                </div>
+                <?php
+                    }else{
+                ?>
+                <div class="header-loginm">
+                    <a href="{{ URL::to('/login') }}" class="header-login-link" >Login</a>
+                  </div>
+                {{-- <div class="header-signup">
+                <a href="{{ URL::to('/login') }}" class="header-signup-link" onclick="RegisterForm()">Sign Up</a>
+                </div> --}}
+                <?php
+                    }
+                ?>
               </div>
               <!-- </div> -->
             </div>

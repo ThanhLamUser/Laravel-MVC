@@ -4,8 +4,6 @@
 
 <div class="content">
     <div class="grid wide">
-
-
         <div class="content-details">
           <div class="cd-path">
             <div class="cd-path--step cd-path--step-active">
@@ -30,24 +28,18 @@
                 <h1>Contact Details</h1>
                 <h4>(*): Field must be filled</h4>
               </div>
-              <div class="cd-input-field--name-age">
-                <div class="cd-input-field--div cd-input-field--name">
+              <div class="cd-input-field--div cd-input-field--email">
                 <p>Name <span>*</span></p>
-                <input type="text" class="cd-input cd-name" width="100%">
-              </div>
-              <div class="cd-input-field--div cd-input-field--age">
-                  <p>Age <span>*</span></p>
-                  <input type="text" class="cd-input cd-age">
-                  </div>
+                <input type="text" class="cd-input cd-email" name="ticketbooked_name">
               </div>
               <div class="cd-input-field--div cd-input-field--email">
                 <p>E-mail <span>*</span></p>
-                <input type="text" class="cd-input cd-email">
+                <input type="text" class="cd-input cd-email" name="ticketbooked_email">
               </div>
-              <div class="cd-input-field--div cd-input-field--phone-num">
+              <div class="cd-input-field--div cd-input-field--phone-num" >
                   <p>Phone Number <span>*</span></p>
                   <div class="cd-input-field--double">
-                    <input type="text" class="cd-input cd-phone-num">
+                    <input type="text" class="cd-input cd-phone-num" name="ticketbooked_phone">
                   </div>
               </div>
               <div class="cd-input-field--proceed">

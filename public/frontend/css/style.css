@@ -255,6 +255,11 @@
     transform: rotate(180deg);
   }
 
+  .poster-img.a {
+    width: 100%;
+    height: 338.7px;
+    user-select: none;
+  }
   .poster-desc--chevron--left:hover {
     transform: translateX(-1px);
     cursor: pointer;
@@ -2893,8 +2898,8 @@
 
 
 .account{
-    background: var(--white-color);
-    border: 1px solid var(--white-color);
+    background: #f7f7f7;;
+    border: 1px solid #f7f7f7;;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     width: 480px;
@@ -3041,11 +3046,6 @@
     flex-direction: column;
     padding-bottom: 12px;
     justify-content: space-between;
-}
-
-.account_container-form--group:nth-child(1){
-    display: flex;
-    flex-direction: row;
 }
 
 .form_group:nth-child(1) {
@@ -3981,3 +3981,65 @@
     width: 120.44px;
     height: 120.44px;
 }
+.offers {
+    margin-bottom: 100px;
+  }
+
+  .offer.odd {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+  }
+
+  .offer.even {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin-top: 100px;
+  }
+
+  .offer-text {
+    width: 45%;
+    font-weight: 500;
+  }
+
+  .offer-text--header {
+    font-size: 2.4rem;
+    font-weight: 900;
+    line-height: 2.6rem;
+  }
+
+  .offer-text--cond, .offer-text--note {
+    font-size: 1.8rem;
+  }
+
+  .offer-text--desc, .offer-text li {
+    font-size: 1.35rem;
+    line-height: 1.8rem;
+  }
+
+  .offer-img {
+    width: 50%;
+  }
+
+  .offer-text button {
+    margin-top: 17px;
+    width: 40%;
+    height: 3rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 10px;
+    background-color: #deabab;
+    transition: 0.4s ease;
+  }
+
+  .offer-text button:hover {
+    cursor: pointer;
+    color: #deabab;
+    background-color: black;
+  }
+
+  .offer-text button:active {
+    transform: translateY(2px);
+  }

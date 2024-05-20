@@ -141,7 +141,7 @@
                             </ul>
 
                             <button>
-                                <a href="{{ URL::to('/logout') }}">LOG OUT</a>
+                                <a href="{{ URL::to('/logout-admin') }}">LOG OUT</a>
                             </button>
                         </div>
                 </div>

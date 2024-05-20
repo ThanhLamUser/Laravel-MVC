@@ -350,7 +350,7 @@
                         </div>
                     </div>
                 </div>
-            <form role="form" id="form1" action="{{ URL::to('/save-checkout-list') }}" onsubmit="return checkSeatsAndProceed()" method="post" enctype="multipart/form-data">
+            <form role="form" id="form1" action="{{ URL::to('/checkout') }}" onsubmit="return checkSeatsAndProceed()" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="select-ticket col l-12 m-12 c-12" style="display: none">
                     <div class="row sm-gutter">
@@ -371,7 +371,7 @@
                                                     d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z" />
                                             </svg>
                                         </div>
-                                        <input type="number" step="1" value="0" name="quantity{{ $ticket->ticket_id  }}" data-value="{{ $ticket->ticket_type }}" readonly
+                                        <input style="box-shadow: none" type="number" step="1" value="0" name="quantity{{ $ticket->ticket_id  }}" data-value="{{ $ticket->ticket_type }}" readonly
                                             id="quantity-field{{$ticket->ticket_id}}" data-value1="{{ $ticket->ticket_price  }}">
                                         <div class="plus-btn"
                                             onclick="checkTicketAmount('quantity-field{{$ticket->ticket_id}}')">

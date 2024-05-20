@@ -9,22 +9,36 @@ Route::get('/homepage', 'App\Http\Controllers\HomeController@index');
 Route::get('/now-showing', 'App\Http\Controllers\HomeController@now_showing');
 Route::get('/coming-soon', 'App\Http\Controllers\HomeController@coming_soon');
 Route::get('/theater', 'App\Http\Controllers\HomeController@theater');
-Route::get('/checkout', 'App\Http\Controllers\HomeController@checkout');
+// Route::get('/checkout', 'App\Http\Controllers\HomeController@checkout');
+Route::get('/offer', 'App\Http\Controllers\HomeController@offer');
 Route::get('/contact-us', 'App\Http\Controllers\HomeController@contact_us');
 Route::get('/about-us', 'App\Http\Controllers\HomeController@about_us');
+Route::get('/login','App\Http\Controllers\HomeController@login');
+
 
 // Fronted detail
 Route::get('/buy-ticket/{movie_id}', 'App\Http\Controllers\HomeController@buy_ticket_movie');
+Route::get('/movie/{movie_id}', 'App\Http\Controllers\HomeController@movie_detail');
+
 
 //Checkout
-Route::post('/save-checkout-list','App\Http\Controllers\CheckOutController@save_checkout_list');
+Route::post('/checkout','App\Http\Controllers\CheckOutController@save_checkout_list');
+
+
+//User
+Route::post('/save-user','App\Http\Controllers\UserController@save_user');
+Route::get('/logout','App\Http\Controllers\UserController@logout');
+Route::post('/login-account','App\Http\Controllers\UserController@login_account');
+Route::get('/customer','App\Http\Controllers\UserController@customer');
+Route::get('/my-tickets','App\Http\Controllers\UserController@my_tickets');
+
 
 
 // Backend
 Route::get('/booking', 'App\Http\Controllers\AdminController@show_booking');
 Route::get('/admin', 'App\Http\Controllers\AdminController@index');
 Route::get('/dashboard','App\Http\Controllers\AdminController@show_dashboard');
-Route::get('/logout','App\Http\Controllers\AdminController@logout');
+Route::get('/logout-admin','App\Http\Controllers\AdminController@logout');
 Route::post('/admin-dashboard','App\Http\Controllers\AdminController@dashboard');
 
 

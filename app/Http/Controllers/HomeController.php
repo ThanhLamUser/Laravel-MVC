@@ -40,7 +40,12 @@ class HomeController extends Controller
     public function about_us(){
         return view('pages.about_us');
     }
-
+    public function offer(){
+        return view('pages.offer');
+    }
+    public function login(){
+        return view('pages.login');
+    }
     //End function admin page
     public function buy_ticket_movie($movie_id){
         $movie_showtime = DB::table('tbl_movie')->where('movie_status','1')->orderby('movie_id','desc')->get();
@@ -95,6 +100,9 @@ class HomeController extends Controller
         ->with('seat_room_showtime',$seat_room_showtime)
         ->with('uniqueDates',$uniqueDates)
         ->with('movie_room_showtime_seat',$movie_room_showtime_seat);
-
     }
+    public function movie_detail($movie_id){
+        return view('pages.movie.movie');
+    }
+
 }
