@@ -100,16 +100,53 @@ function confirmDelete(url) {
     }
 }
 
+// function displayFileName() {
+//     var fileInput = document.getElementById('drag-n-drop');
+//     var fileNameDisplay = document.getElementById('file-name-display');
+//     var imgView = document.getElementById('img-view');
+
+//     if (fileInput.files.length > 0) {
+//         var file = fileInput.files[0];
+//         fileNameDisplay.textContent = 'Selected file: ' + file.name;
+
+//         // Display the selected image
+//         var reader = new FileReader();
+//         reader.onload = function(e) {
+//             imgView.innerHTML = '<img src="' + e.target.result + '" alt="Selected Image" style="max-width: 100%; height: auto;">';
+//         };
+//         reader.readAsDataURL(file);
+//     } else {
+//         fileNameDisplay.textContent = '';
+//         imgView.innerHTML = '<span>Drag and drop or click <br>here to upload image.</span>';
+//     }
+// }
 function displayFileName() {
     var fileInput = document.getElementById('drag-n-drop');
     var fileNameDisplay = document.getElementById('file-name-display');
+    var imgView = document.getElementById('img-view');
 
     if (fileInput.files.length > 0) {
-        fileNameDisplay.textContent = 'Selected file: ' + fileInput.files[0].name;
+        var file = fileInput.files[0];
+        fileNameDisplay.textContent = 'Selected file: ' + file.name;
+
+        // Display the selected image
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            imgView.innerHTML = '<img src="' + e.target.result + '" alt="Selected Image" style="max-width: 100%; height: auto;">';
+        };
+        reader.readAsDataURL(file);
     } else {
         fileNameDisplay.textContent = '';
+        imgView.innerHTML = '<span>Drag and drop or click <br>here to upload image.</span>';
     }
 }
+
+// Ensure that clicking on the drop area triggers the file input
+document.getElementById('drop-area').addEventListener('click', function() {
+    document.getElementById('drag-n-drop').click();
+});
+
+
 
 
 function addRoomEntry() {

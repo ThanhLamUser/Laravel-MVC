@@ -152,7 +152,7 @@
                                                     $Nextdayis = $nextYear . '-' . $nextMonth . '-' . $nextDay;
                                                     ?>
                                                     @if ($Nextdayis == $dateToday)
-                                                        <div data-value="302" data-value1="<?php
+                                                        <div data-value="322" data-value1="<?php
                                                         $nextTimestamp = strtotime('+1 day');
                                                         $nextDay = date('d', $nextTimestamp);
                                                         $nextMonth = date('m', $nextTimestamp);
@@ -175,7 +175,7 @@
                                                 @endforeach
                                             </li>
                                             <li class="movie-info--date" onclick="toggleMIH('no_schedule')">
-                                                <div data-value="455" data-value1="<?php
+                                                <div data-value="493" data-value1="<?php
                                                 $nextTimestamp = strtotime('+2 day');
                                                 $nextDay = date('d', $nextTimestamp);
                                                 $nextMonth = date('m', $nextTimestamp);
@@ -196,7 +196,7 @@
                                                 </div>
                                             </li>
                                             <li class="movie-info--date" onclick="toggleMIH('no_schedule')">
-                                                <div data-value="623" data-value1="<?php
+                                                <div data-value="639" data-value1="<?php
                                                 $nextTimestamp = strtotime('+3 day');
                                                 $nextDay = date('d', $nextTimestamp);
                                                 $nextMonth = date('m', $nextTimestamp);
@@ -217,7 +217,7 @@
                                                 </div>
                                             </li>
                                             <li class="movie-info--date" onclick="toggleMIH('no_schedule')">
-                                                <div data-value="797" data-value1="<?php
+                                                <div data-value="785" data-value1="<?php
                                                 $nextTimestamp = strtotime('+4 day');
                                                 $nextDay = date('d', $nextTimestamp);
                                                 $nextMonth = date('m', $nextTimestamp);
@@ -238,7 +238,7 @@
                                                 </div>
                                             </li>
                                             <li class="movie-info--date" onclick="toggleMIH('no_schedule')">
-                                                <div data-value="942" data-value1="<?php
+                                                <div data-value="933" data-value1="<?php
                                                 $nextTimestamp = strtotime('+5 day');
                                                 $nextDay = date('d', $nextTimestamp);
                                                 $nextMonth = date('m', $nextTimestamp);

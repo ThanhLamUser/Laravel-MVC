@@ -71,9 +71,13 @@
                 <div>
                     <p>Photo</p>
                     <label for="drag-n-drop" id="drop-area">
-                        <input type="file" accept="image/*" name="movie_img" id="drag-n-drop" onchange="displayFileName()"  hidden>
+                        <input type="file" accept="image/*" name="movie_img" id="drag-n-drop" onchange="displayFileName()" hidden>
                         <div id="img-view">
-                            <span>Drag and drop or click <br>here to upload image.</span>
+                            @if ($edit_value->movie_img)
+                                <img src="{{ asset('public/upload/movie/' . $edit_value->movie_img) }}" alt="Selected Image" style="max-width: 100%; height: auto;" id="current-img">
+                            @else
+                                <span>Drag and drop or click <br>here to upload image.</span>
+                            @endif
                         </div>
                     </label>
                 </div>
