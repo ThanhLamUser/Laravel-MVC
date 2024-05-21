@@ -30,13 +30,20 @@ class HomeController extends Controller
 
     }
     public function now_showing(){
-        return view('pages.now_showing');
+        $list_movie = DB::table('tbl_movie')->where('movie_status','1')
+        ->where('movie_datestart', '<', DB::raw('DATE_ADD(NOW(), INTERVAL 1 DAY)'))
+        ->orderby('movie_id','desc')->get();
+        return view('pages.now_showing')->with('list_movie',$list_movie) ;
     }
     public function buy_ticket(){
         return view('pages.buy_ticket');
     }
     public function coming_soon(){
-        return view('pages.coming_soon');
+        $list_movie_soon = DB::table('tbl_movie')->where('movie_status','1')
+        ->where('movie_datestart', '>', DB::raw('DATE_ADD(NOW(), INTERVAL 1 DAY)'))
+        ->orderBy('movie_datestart', 'desc')
+        ->get();
+        return view('pages.coming_soon')->with('list_movie_soon',$list_movie_soon);
     }
     public function theater(){
         return view('pages.theater');
