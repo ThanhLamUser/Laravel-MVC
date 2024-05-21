@@ -27,7 +27,7 @@ class MovieController extends Controller
     }
     public function list_movie(){
         $this ->AuthLogin();
-        $list_movie = DB::table('tbl_movie') -> get();
+        $list_movie = DB::table('tbl_movie')->orderby('movie_datestart','desc') -> get();
         return view('admin.list_movie')->with('list_movie', $list_movie);
     }
     public function save_movie_list(Request $request){

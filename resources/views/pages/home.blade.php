@@ -169,16 +169,17 @@
                     <div class="swiper-wrapper a">
                         <div class="swiper-slide">
                             <div class="row sm-gutter">
+                                @foreach ($list_movie_soon as $key => $movie)
                                 <div class="col l-2 m-4 c-6">
-                                    <div class="coming-soon--movies-single">
-                                        <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pQYHouPsDw32FhDLr7E3jmw0WTk.jpg" alt="" class="coming-soon--movies-single-img">
+                                    <div class="coming-soon--movies-single" onclick="transfer('movie/{{ $movie->movie_id }}')">
+                                        <img src="{{ URL::to('public/upload/movie/'.$movie->movie_img) }}" alt="" class="coming-soon--movies-single-img">
                                         <div class="coming-soon--movies-single-tags">
-                                            <span class="coming-soon--movies-single-tag--1">15</span>
+                                            <span class="coming-soon--movies-single-tag--1">{{ $movie->movie_age }}</span>
                                             <span class="coming-soon--movies-single-tag--2">Subtitles</span>
-                                            <span class="coming-soon--movies-single-tag--1">2D</span>
+                                            <span class="coming-soon--movies-single-tag--1">{{ $movie->movie_time }}'</span>
                                         </div>
-                                        <div class="coming-soon--movies-single-name">Exhuma</div>
-                                        <div class="coming-soon--movies-single-cat">Mystery, Horror, Thriller</div>
+                                        <div class="coming-soon--movies-single-name">{{ $movie->movie_name }}</div>
+                                        <div class="coming-soon--movies-single-cat">{{ $movie->movie_category }}</div>
 
 
                                         <div class="coming-soon--movies-single-buttons">
@@ -192,6 +193,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
                                 <div class="col l-2 m-4 c-6">
                                     <div class="coming-soon--movies-single">
                                         <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/f7QBvIzoWSJw3jWPGnZBc5vwQ0l.jpg" alt="" class="coming-soon--movies-single-img">

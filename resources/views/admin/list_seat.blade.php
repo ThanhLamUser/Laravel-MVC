@@ -12,7 +12,7 @@
                     <th>Seat</th>
                     <th>Type</th>
                     <th>Status</th>
-                    <th>Delete</th>
+                    {{-- <th>Delete</th> --}}
                 </tr>
                 @foreach ($all_seat as $key => $seat_pro)
                 <tr>
@@ -42,9 +42,9 @@
                         }
                     ?>
                     </span></td>
-                    <th>
+                    {{-- <th>
                         <button onclick="confirmDelete('{{ URL::to('/delete-seat/'.$seat_pro->seat_id) }}')" id="adm__all-seat--del--btn">DELETE</button>
-                    </th>
+                    </th> --}}
                     <?php
                     }
                     ?>

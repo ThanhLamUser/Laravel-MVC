@@ -342,7 +342,7 @@
                                     @endforeach
                                     <li class="movie-info--hours-list" id="movie-info--hours-list">
                                         <p class="movie-info--hours-option NO-schedules" id="movie-info--hours-option--"
-                                            data-value3="no_schedule">THERE IS CURRENTLY NO RELEASE DATE</p>
+                                            data-value3="no_schedule">THERE IS CURRENTLY NO RELEASE DATES</p>
                                     </li>
                                 </ul>
                             </div>

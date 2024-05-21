@@ -16,8 +16,18 @@ class HomeController extends Controller
     public function index(){
         $movie_showtime = DB::table('tbl_movie')->where('movie_status','1')->orderby('movie_id','desc')->get();
         $room_showtime = DB::table('tbl_room')->where('room_status','1')->orderby('room_id','desc')->get();
-        $list_movie = DB::table('tbl_movie')->where('movie_status','1')->orderby('movie_id','desc')->limit(5)->get();
-        return view('pages.home')->with('movie',$movie_showtime)->with('room',$room_showtime)->with('list_movie',$list_movie);
+        $list_movie = DB::table('tbl_movie')->where('movie_status','1')
+        ->where('movie_datestart', '<', DB::raw('DATE_ADD(NOW(), INTERVAL 1 DAY)'))
+        ->orderby('movie_id','desc')->limit(5)->get();
+        $list_movie_soon = DB::table('tbl_movie')->where('movie_status','1')
+        ->where('movie_datestart', '>', DB::raw('DATE_ADD(NOW(), INTERVAL 1 DAY)'))
+        ->orderBy('movie_datestart', 'desc')
+        ->get();
+        return view('pages.home')->with('movie',$movie_showtime)
+        ->with('room',$room_showtime)
+        ->with('list_movie',$list_movie)
+        ->with('list_movie_soon',$list_movie_soon);
+
     }
     public function now_showing(){
         return view('pages.now_showing');
@@ -70,6 +80,7 @@ class HomeController extends Controller
         ->join('tbl_room','tbl_room.room_id','=','tbl_seat.room_id')
        ->orderby('tbl_showtime.showtime_date','desc')->orderby('tbl_showtime.showtime_timeslot','desc')->orderby('tbl_seat.seat_id','asc')  ->get();
        $list_ticket = DB::table('tbl_ticket')->get();
+
        $movie_room_showtime_seat = DB::table('tbl_seat')
        ->join('tbl_showtime','tbl_showtime.showtime_id','=','tbl_seat.showtime_id')
        ->join('tbl_room','tbl_room.room_id','=','tbl_seat.room_id')
@@ -102,7 +113,15 @@ class HomeController extends Controller
         ->with('movie_room_showtime_seat',$movie_room_showtime_seat);
     }
     public function movie_detail($movie_id){
-        return view('pages.movie.movie');
+        $list_movie_soon = DB::table('tbl_movie')-> where('movie_id',$movie_id)->where('movie_status','1')
+        ->where('movie_datestart', '>', DB::raw('DATE_ADD(NOW(), INTERVAL 1 DAY)'))
+        ->orderBy('movie_datestart', 'desc')
+        ->get();
+        $list_movie_now = DB::table('tbl_movie')-> where('movie_id',$movie_id)->where('movie_status','1')
+        ->where('movie_datestart', '<', DB::raw('DATE_ADD(NOW(), INTERVAL 1 DAY)'))
+        ->orderBy('movie_datestart', 'desc')
+        ->get();
+        return view('pages.movie.movie')->with('list_movie_soon',$list_movie_soon)->with('list_movie_now',$list_movie_now);
     }
 
 }

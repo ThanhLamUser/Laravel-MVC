@@ -112,6 +112,7 @@
             <table>
                 <tr>
                     <th>Name</th>
+                    <th>Premiere Date</th>
                     <th>Image</th>
                     <th>Show</th>
                     <th>Edit</th>
@@ -121,6 +122,7 @@
                             <tr>
 
                                 <th>{{ $movie_pro->movie_name }}</th>
+                                <th>{{ $movie_pro->movie_datestart}}</th>
                                 <th><span class="movie_img"><img src="public/upload/movie/{{ $movie_pro->movie_img }}" alt="" height="70px" width="47px"></span></th>
                                 <th><span>
                                     <?php
