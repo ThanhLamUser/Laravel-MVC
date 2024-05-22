@@ -63,6 +63,12 @@ class HomeController extends Controller
     public function login(){
         return view('pages.login');
     }
+    public function search(Request $request){
+        $keywords = $request -> keywords_submit;
+
+        $search_movie = DB::table('tbl_movie')->where('movie_status','1')->where('movie_name','like','%'.$keywords.'%')->get();
+        return view('pages.search')->with('keywords',$keywords)->with('search_movie',$search_movie);
+    }
     //End function admin page
     public function buy_ticket_movie($movie_id){
         $movie_showtime = DB::table('tbl_movie')->where('movie_status','1')->orderby('movie_id','desc')->get();

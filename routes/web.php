@@ -14,6 +14,7 @@ Route::get('/offer', 'App\Http\Controllers\HomeController@offer');
 Route::get('/contact-us', 'App\Http\Controllers\HomeController@contact_us');
 Route::get('/about-us', 'App\Http\Controllers\HomeController@about_us');
 Route::get('/login','App\Http\Controllers\HomeController@login');
+Route::post('/search','App\Http\Controllers\HomeController@search');
 
 
 // Fronted detail
