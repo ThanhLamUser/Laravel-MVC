@@ -200,7 +200,7 @@
                 // Thêm style 'display: block;' vào phần tử đó
                 seat.style.display = 'flex';
             }else{
-                seat.style.display = 'none';
+                seat.remove();
             }
         });
     }
@@ -292,39 +292,42 @@
     {// Update Sticky
     function updateSticky(fieldId) {
         document.getElementById("movie-type").innerHTML = document.getElementById(fieldId).value;
-        document.getElementById("movie-screen").innerHTML = document.getElementById(fieldId).getAttribute("data-value1");
+        document.getElementById("movie-screen").innerHTML = document.getElementById(fieldId).getAttribute("data-value5");
         document.getElementById("movie-time").innerHTML = document.getElementById(fieldId).getAttribute("data-value2");
         document.getElementById("room-selected").innerHTML = document.getElementById(fieldId).getAttribute("data-value1");
-        var roomSelected = document.getElementById('room-selected');
-        roomSelected.textContent = roomSelected.textContent.toUpperCase();
+        document.getElementById("room-selected").innerHTML = document.getElementById(fieldId).getAttribute("data-value5").toUpperCase();
         var movieScreen = document.getElementById(fieldId).getAttribute("data-value1");
         document.querySelector('input[name="movie_screen"]').value = movieScreen;
-        var movieTime = document.getElementById(fieldId).getAttribute("data-value2");
+        var movieTime = document.getElementById(fieldId).getAttribute("data-value4");
         document.querySelector('input[name="movie_time"]').value = movieTime;
 
     }
 
     function updateSticky2(fieldId) {
         document.getElementById("movie-date").innerHTML = document.getElementById(fieldId).getAttribute("data-value1");
-        var movieDateValue = document.getElementById(fieldId).getAttribute("data-value1");
-        document.querySelector('input[name="movie_date"]').value = movieDateValue;
     }
         //Update Sticky - Seats
     var selectedSingleSeats = [];
     var selectedCoupleSeats = [];
+    var selectedSingleSeats = [];
+    var selectedSingleSeatTexts = [];
+    var selectedCoupleSeatTexts = [];
+
     function updateStickySingleSeats(fieldId) {
         var seatElement = document.getElementById(fieldId);
+        var dataValue2 = seatElement.getAttribute('data-value2'); // Lấy giá trị của data-value2
+        var seatText = seatElement.textContent.trim(); // Lấy giá trị textContent
+
         // Kiểm tra xem đã chọn số vé chưa
-        if (singleTicketAmount == 0 ) {
+        if (singleTicketAmount == 0) {
             window.alert('Select your single ticket(s) first!');
         } else {
             // Hủy chọn ghế
-            if (selectedSingleSeats.includes(seatElement.innerText)) {
-                var indexToRemove = selectedSingleSeats.indexOf(seatElement.innerText);
+            if (selectedSingleSeats.includes(dataValue2)) {
+                var indexToRemove = selectedSingleSeats.indexOf(dataValue2);
                 if (indexToRemove !== -1) {
                     selectedSingleSeats.splice(indexToRemove, 1);
-                    document.getElementById('movie-seats').innerHTML = selectedSingleSeats.join(', ');
-                    document.querySelector('input[name="movie_seats"]').value =  selectedSingleSeats.join(', ');
+                    selectedSingleSeatTexts.splice(indexToRemove, 1);
                     selectedSeats--;
                     toggleFocusCSS(seatElement); // Gọi toggleFocusCSS để hủy chọn ghế
                 }
@@ -332,51 +335,62 @@
                 // Check số ghế phải bằng số vé, không cho chọn thêm
                 if (selectedSingleSeats.length >= singleTicketAmount) {
                     window.alert('You have already chosen enough seats for this type of ticket!');
-                } else {
-                    // Chọn ghế + thêm vào ds ghế đã chọn
-                    selectedSingleSeats.push(seatElement.innerText);
-                    document.getElementById('movie-seats').innerHTML = selectedSingleSeats.join(', ');
-                    document.querySelector('input[name="movie_seats"]').value =  selectedSingleSeats.join(', ');
-                    selectedSeats++;
-                    toggleFocusCSS(seatElement); // Gọi toggleFocusCSS để chọn ghế
+                    return; // Dừng việc thực thi tiếp theo
                 }
+                // Chọn ghế + thêm vào ds ghế đã chọn
+                selectedSingleSeats.push(dataValue2);
+                selectedSingleSeatTexts.push(seatText);
+                selectedSeats++;
+                toggleFocusCSS(seatElement); // Gọi toggleFocusCSS để chọn ghế
             }
+
+            // Cập nhật hiển thị ghế đã chọn
+            document.getElementById('movie-seats').textContent = selectedSingleSeatTexts.join(', ');
+            document.querySelector('input[name="movie_seats"]').value = selectedSingleSeats.join(',');
         }
     }
 
+
+
     function updateStickyCoupleSeats(fieldId) {
-        //Kiểm tra xem đã chọn số vé chưa
+        var seatElement = document.getElementById(fieldId);
+        var dataValue2 = seatElement.getAttribute('data-value2'); // Lấy giá trị của data-value2
+        var seatText = seatElement.textContent.trim(); // Lấy giá trị textContent
+
+        // Kiểm tra xem đã chọn số vé cặp chưa
         if (coupleTicketAmount == 0) {
-            window.alert('Select your couple ticket(s) first!')
+            window.alert('Select your couple ticket(s) first!');
         } else {
-            //Hủy chọn ghế
-            if (selectedCoupleSeats.includes(document.getElementById(fieldId).innerText)) {
-                var indexToRemove = selectedCoupleSeats.indexOf(document.getElementById(fieldId).innerText);
+            // Hủy chọn ghế
+            if (selectedCoupleSeats.includes(dataValue2)) {
+                var indexToRemove = selectedCoupleSeats.indexOf(dataValue2);
                 if (indexToRemove !== -1) {
                     selectedCoupleSeats.splice(indexToRemove, 1);
-                    document.getElementById('movie-seats-couple').innerHTML = selectedCoupleSeats;
-                    document.querySelector('input[name="movie_seats_couple"]').value =  selectedCoupleSeats;
-                    selectedSeats=selectedSeats-2;
-                    toggleFocusCSS(document.getElementById(fieldId));
+                    selectedCoupleSeatTexts.splice(indexToRemove, 1);
+                    selectedSeats = selectedSeats - 2;
+                    toggleFocusCSS(seatElement);
                 }
             } else {
-                //Check số ghế phải bằng số vé, không cho chọn thêm
+                // Check số ghế phải bằng số vé, không cho chọn thêm
                 if (selectedCoupleSeats.length >= coupleTicketAmount) {
                     window.alert('You have already chosen enough seats for this type of ticket!');
-                } else {
-                //Chọn ghế + thêm vào ds ghế đã chọn
-                    selectedCoupleSeats.push(document.getElementById(fieldId).innerText);
-                    document.getElementById('movie-seats-couple').innerHTML = selectedCoupleSeats;
-                    document.querySelector('input[name="movie_seats_couple"]').value =  selectedCoupleSeats;
-                    selectedSeats=selectedSeats+2;
-                    toggleFocusCSS(document.getElementById(fieldId));
-
+                    return; // Dừng việc thực thi tiếp theo
                 }
+                // Chọn ghế + thêm vào ds ghế đã chọn
+                selectedCoupleSeats.push(dataValue2);
+                selectedCoupleSeatTexts.push(seatText);
+                selectedSeats = selectedSeats + 2;
+                toggleFocusCSS(seatElement);
             }
 
+            // Cập nhật hiển thị ghế đã chọn
+            document.getElementById('movie-seats-couple').textContent = selectedCoupleSeatTexts.join(', ');
+            document.querySelector('input[name="movie_seats_couple"]').value = selectedCoupleSeats.join(',');
         }
+    }
 
-    }}
+
+    }
 
     {
         function increaseQuantity(inputId) {
@@ -434,112 +448,6 @@
         return true; // Cho phép submit form nếu đủ ghế
     }
 
-
-// document.addEventListener("DOMContentLoaded", function() {
-//     var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-//     function RegisterForm(){
-
-//         var register_form = `<div class="modal">
-//         <div class="modal_overlay" onclick="CloseForm()">
-//         </div>
-//         <div class="modal_body">
-//             <div class="register">
-//                 <div class="account">
-//                     <div class="account_container">
-//                         <h2 class="account_container-header-register" style="margin-top: 36px;">Create your account</h2>
-//                         <form class="account_container-form" action="./save-user" method="post" enctype="multipart/form-data">
-//                           <input type="hidden" name="_token" value="${csrfToken}">
-//                             <div class="account_container-form--group">
-//                                 <p style="margin:0; font-size:1 rem">FullName <span style="color:red;font-weight:700">*</span></p>
-//                                  <input type="text" id="user_name" name="user_name">
-//                              </div>
-//                              <div class="account_container-form--group">
-//                              <p style="margin:0; font-size:1 rem">Phone <span style="color:red;font-weight:700">*</span></p>
-//                                 <input type="text" id="user_phone" name="user_phone">
-//                             </div>
-//                             <div class="account_container-form--group">
-//                                   <p style="margin:0; font-size:1rem">Email <span style="color:red;font-weight:700">*</span></p>
-//                                 <input type="text" id="user_email" name="user_email">
-//                             </div>
-//                             <div class="account_container-form--group">
-//                                  <p style="margin:0; font-size:1 rem">Password <span style="color:red;font-weight:700">*</span></p>
-//                                 <input type="password" id="user_password" name="user_password">
-//                             </div>
-//                             <div class="button_container">
-//                                 <button class="btn" >CREATE ACCOUNT</button>
-//                             </div>
-//                             <p class="account_text">Do you already have an account?
-//                                 <a href="#" onclick="LoginForm()">Login</a></p>
-//                         </form>
-//                     </div>
-//                 </div>
-//                 <div class="logo hide-on-mobile">
-//                     <img src="./public/frontend/images/cinova-logo.png" alt="" class="logo_img">
-//                 </div>
-//             </div>
-//         </div>`;
-//         document.getElementById('login_register_form').innerHTML= register_form;
-//     }
-//     function LoginForm() {
-//         var login_form = `<div class="modal">
-//             <div class="modal_overlay" onclick="CloseForm()">
-//             </div>
-//             <div class="modal_body">
-//                 <div class="login">
-//                     <div class="logo hide-on-mobile">
-//                         <img src="./public/frontend/images/cinova-logo.png" alt="" class="logo_img">
-//                     </div>
-//                     <div class="account">
-//                         <div class="account_container">
-//                             <h1 class="account_container-header">Login into your account</h1>
-//                             <form class="account_container-form">
-//                                 <div class="account_container-form--group-login">
-//                                     <label for="email">Email or Phone</label>
-//                                     <input type="email" id="email" name="email">
-//                                 </div>
-//                                 <svg xmlns="http://www.w3.org/2000/svg" class="img_email" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"/></svg>
-
-//                                 <div class="account_container-form--group-login">
-//                                     <label for="Password">Password</label>
-//                                     <input type="password" id="Password" name="Password">
-//                                 </div>
-//                                 <svg xmlns="http://www.w3.org/2000/svg" class="img_lock" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M144 144v48H304V144c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192V144C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64H80z"/></svg>
-//                                 <div class="FAQ">
-//                                     <div class="FAQ_remember">
-//                                         <input type="checkbox" style="box-shadow: none" id="remember">
-//                                         <label>Remember Me</label>
-//                                     </div>
-//                                     <div class="FAQ_forgot">
-//                                         <a href="" >Forgot Password?</a>
-//                                     </div>
-//                                 </div>
-//                                 <div class="button_container ">
-//                                     <button class="btn btn_LOGIN">LOGIN NOW</button>
-//                                 </div>
-//                                 <div class="OR_container">
-//                                     <div class="line"></div>
-//                                     <p class="OR">OR</p>
-//                                     <div class="line"></div>
-//                                 </div>
-//                                 <div class="button_container">
-//                                     <button id="signup-button" onclick="RegisterForm()" class="btn">SIGN UP NOW</button>
-//                                 </div>
-//                             </form>
-//                         </div>
-//                     </div>
-//                 </div>
-
-//             </div>
-//         </div>`
-
-//         document.getElementById('login_register_form').innerHTML = login_form;
-//     }
-
-
-//     window.RegisterForm = RegisterForm;
-//     window.CloseForm = CloseForm;
-//     window.LoginForm = LoginForm;
-// });
 
 function RegisterForm(){
     document.querySelector('.register').style.display = "block";

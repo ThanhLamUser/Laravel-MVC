@@ -24,6 +24,7 @@ Route::get('/movie/{movie_id}', 'App\Http\Controllers\HomeController@movie_detai
 
 //Checkout
 Route::post('/checkout','App\Http\Controllers\CheckOutController@save_checkout_list');
+Route::post('/payment','App\Http\Controllers\CheckOutController@save_payment_list');
 
 
 //User

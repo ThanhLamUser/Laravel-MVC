@@ -28,7 +28,8 @@
                 <h1>Contact Details</h1>
                 <h4>(*): Field must be filled</h4>
               </div>
-              <form action="">
+              <form role="form" id="form1" action="{{ URL::to('/save-info-checkout') }}" method="post" enctype="multipart/form-data">
+                {{ csrf_field() }}
               <div class="cd-input-field--div cd-input-field--email">
                 <p>Name <span>*</span></p>
                 <input type="text" class="cd-input cd-email" name="ticketbooked_name">
@@ -46,7 +47,6 @@
               <div class="cd-input-field--proceed">
                 <button>PROCEED</button>
               </div>
-            </form>
             </div>
 
             <div class="cd-receipt">
@@ -98,90 +98,79 @@
               <p id="cd-location">CINOVA CINEMA</p>
               <p id="cd-exact-location">Hàn Thuyên Street, Neighborhood 6, Linh Trung Ward, Thủ Đức District, Ho Chi Minh City</p>
               <p id="cd-date">Date and Time</p>
-              <p id="cd-exact-date">{{  $movie_date }}-{{ $movie_time  }}</p>
+              @foreach($time_movie as $key => $time)
+              <p id="cd-exact-date">{{  $time->showtime_date }}-{{ $time->showtime_timeslot}} </p>
+              @endforeach
               <p>
                 <table id="cd-guest-info">
-                  <tr>
-                    <td style="padding-right: 18px;">Room</td>
-                    <td style="padding-right: 18px;">Amount</td>
-                    <td style="padding-right: 18px;">Type</td>
-                    <td style="padding-right: 18px;">Seat Number</td>
-                  </tr >
-                  <?php
-                    if ($quantity_ticket1 != 0 || $quantity_ticket2 != 0 ){
-                  ?>
-                      <tr style="font-size: 1.4rem;">
-                        <td>{{ $movie_screen }}</td>
-                        <td> <?php if ($quantity_ticket1 != 0 ){ ?>
-                          {{ $quantity_ticket1 }} Student
-                            <?php } ?>
-                            <?php if ($quantity_ticket2 != 0 ){ ?>
-                                {{ $quantity_ticket2 }} Adult
-                            <?php } ?>
-                        </td>
-                        <td>Single</td>
-                        <td>{{ $movie_seats}}</td>
-                      </tr>
+                    <tr>
+                      <td style="padding-right: 18px;">Room</td>
+                      <td style="padding-right: 18px;">Amount</td>
+                      <td style="padding-right: 18px;">Type</td>
+                      <td style="padding-right: 18px;">Seat Number</td>
+                    </tr >
                     <?php
-                    }
+                      if ($ticketQuantities[1] != 0 || $ticketQuantities[2] != 0 ){
                     ?>
-                  <?php
-                    if ($quantity_ticket3 != 0){
-                  ?>
-                      <tr style="font-size: 1.4rem;">
-                        <td>{{ $movie_screen }}</td>
-                        <td>{{ $quantity_ticket3 }} Adult</td>
-                        <td>Couple</td>
-                        <td>{{ $movie_seats_couple }}</td>
-                      </tr>
-                    <?php
-                    }
-                    ?>
+                        <tr style="font-size: 1.4rem;">
+                            @foreach ($screen_movie as $key => $room)
+                            <td>{{$room->room_name }}</td>
+                            @endforeach
+                            <td>
+                            <?php if ($ticketQuantities[1] != 0 ){
+                            ?>
+                            {{ $ticketQuantities[1] }} Student
+                                  <?php } ?>
+                                  <?php if ($ticketQuantities[2] != 0 ){ ?>
+                                      {{ $ticketQuantities[2] }} Adult
+                                  <?php } ?>
+                              </td>
+                          <td>Single</td>
 
-                </table>
-              </p>
-              <p>
-                <?php if ($quantity_popcorn1 != 0 || $quantity_popcorn2 != 0 || $quantity_popcorn2 != 0  ){ ?>
+                            <td> @foreach ($seat_single as $seat){{ $seat->seat_name }} @endforeach</td>
+
+                          </tr>
+                      <?php
+                      }
+                      ?>
+                    <?php
+                      if ($ticketQuantities[3] != 0){
+                    ?>
+                        <tr style="font-size: 1.4rem;">
+                            @foreach ($screen_movie as $key => $room)
+                            <td>{{$room->room_name }}</td>
+                            @endforeach
+                          <td>{{ $ticketQuantities[3] }} Adult</td>
+                          <td>Couple</td>
+
+                          <td> @foreach ($seat_couple as $seat){{ $seat->seat_name }} @endforeach</td>
+
+                        </tr>
+                      <?php
+                      }
+                      ?>
+
+                  </table>
+            </p>
+
+            <p>
+                @if (!empty($popcornQuantities))
                 <table id="cd-popcorn">
-                  <tr>
-                    <td style="padding-right: 18px;">Popcorn Combo</td>
-                    <td style="padding-right: 18px;">Quantity</td>
-                  </tr>
-                  <tr style="font-size: 1.4rem;">
-                    <?php
-                    if ($quantity_popcorn1 != 0  ){
-                  ?>
-                    <td>COMBO 01</td>
-                    <td>{{ $quantity_popcorn1 }}</td>
-                  </tr>
-                  <?php
-                }
-                ?>
-                 <tr style="font-size: 1.4rem;">
-                    <?php
-                    if ($quantity_popcorn2 != 0  ){
-                  ?>
-                    <td>COMBO 02</td>
-                    <td>{{ $quantity_popcorn2 }}</td>
-                  </tr>
-                  <?php
-                }
-                ?>
-                 <tr style="font-size: 1.4rem;">
-                    <?php
-                    if ($quantity_popcorn3 != 0  ){
-                  ?>
-                    <td>COMBO 03</td>
-                    <td>{{ $quantity_popcorn3 }}</td>
-                  </tr>
-                  <?php
-                }
-                ?>
+                    <tr>
+                        <td style="padding-right: 18px;">Popcorn Combo</td>
+                        <td style="padding-right: 18px;">Quantity</td>
+                    </tr>
+                    @foreach ($popcornQuantities as $key => $quantity)
+                    @if ($quantity != 0)
+                    <tr style="font-size: 1.4rem;">
+                        <td>COMBO {{ $key }}</td>
+                        <td>{{ $quantity }}</td>
+                    </tr>
+                    @endif
+                    @endforeach
                 </table>
-                <?php
-                }
-                ?>
-              </p>
+                @endif
+            </p>
               <div class="cd-total">
                 <h1>TOTAL</h1>
                 <p id="cd-total">{{ $temp_price_calc }}</p>

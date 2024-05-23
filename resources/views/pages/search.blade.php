@@ -18,7 +18,7 @@
                             </h1>
                         @elseif ($count == 1)
                             @foreach ($search_movie as $key => $movie_pro)
-                            <div class="col l-12 m-4 c-6" style="width:223px" onclick="transfer('movie/{{ $movie_pro->movie_id }}')">
+                            <div class="col l-12 m-4 c-6" style="width:210px" onclick="transfer('movie/{{ $movie_pro->movie_id }}')">
                                 <div class="now-showing--movies-single">
                                     <img src="{{ URL::to('public/upload/movie/' . $movie_pro->movie_img) }}"
                                         class="now-showing--movies-single-img">

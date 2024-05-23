@@ -302,10 +302,11 @@
                                             $convertedTime = date('H:i', strtotime($timeWithSeconds));
                                             ?>
                                             <li class="movie-info--hours-list" id="movie-info--hours-list">
-                                                <button value="2D - Subtitles" data-value1="{{ $showtime->room_name }}"
+                                                <button value="2D - Subtitles" data-value1="{{ $showtime->room_id}}"  data-value5="{{ $showtime->room_name }}"
                                                     data-value2="{{ $convertedTime }} " class="movie-info--hours-option"
                                                     id="movie-info--hours-option{{ $showtime->showtime_id }}"
                                                     data-value3="today"
+                                                    data-value4="{{ $showtime->showtime_id }}"
                                                     onclick="toggleFocusMFH(this), updateSticky('movie-info--hours-option{{ $showtime->showtime_id }}',toggleClick()),toggleClickSEAT({{ $showtime->showtime_id }},{{ $showtime->room_id }})">{{ $convertedTime }}
                                                 </button>
                                             </li>
@@ -316,10 +317,11 @@
                                             $convertedTime = date('H:i', strtotime($timeWithSeconds));
                                             ?>
                                             <li class="movie-info--hours-list">
-                                                <button value="2D - Subtitles" data-value1="{{ $showtime->room_name }}"
+                                                <button value="2D - Subtitles" data-value1="{{$showtime->room_id }}"  data-value5="{{ $showtime->room_name }}"
                                                     data-value2="{{ $convertedTime }} " class="movie-info--hours-option"
                                                     id="movie-info--hours-option{{ $showtime->showtime_id }}"
                                                     data-value3="yesterday"
+                                                    data-value4="{{ $showtime->showtime_id }}"
                                                     onclick="toggleFocusMFH(this), updateSticky('movie-info--hours-option{{ $showtime->showtime_id }}',toggleClick()),toggleClickSEAT({{ $showtime->showtime_id }},{{ $showtime->room_id }})">{{ $convertedTime }}
                                                 </button>
                                             </li>
@@ -331,10 +333,11 @@
                                             $convertedTime = date('H:i', strtotime($timeWithSeconds));
                                             ?>
                                             <li class="movie-info--hours-list" id="movie-info--hours-list">
-                                                <button value="2D - Subtitles" data-value1="{{ $showtime->room_name }}"
+                                                <button value="2D - Subtitles" data-value1="{{ $showtime->room_id }}" data-value5="{{ $showtime->room_name }}"
                                                     data-value2="{{ $convertedTime }} " class="movie-info--hours-option"
                                                     id="movie-info--hours-option{{ $showtime->showtime_id }}"
                                                     data-value3="tomorrow"
+                                                    data-value4="{{ $showtime->showtime_id }}"
                                                     onclick="toggleFocusMFH(this), updateSticky('movie-info--hours-option{{ $showtime->showtime_id }}',toggleClick()),toggleClickSEAT({{ $showtime->showtime_id }},{{ $showtime->room_id }})">{{ $convertedTime }}
                                                 </button>
                                             </li>
@@ -392,7 +395,7 @@
                 <div class="choose-seat col l-12 m-12 c-12" style="display: none">
                     <div class="row sm-gutter">
                         <div class="choose-seat--container col l-12 m-4 c-6" style="display: none">
-                            <h1 class="choose-seat--heading">CHOOSE YOUR SEAT(S)<p id="room-selected"></p>
+                            <h1 class="choose-seat--heading">CHOOSE YOUR SEAT(S) - <span id="room-selected"></span>
                             </h1>
 
                             <div class="choose-seat--screen">
@@ -406,8 +409,8 @@
                                             <div onclick="toggleFocusCSS(this), toggleSeatAndStartCountdown('choose-seat--seat{{ $seat->seat_id }}')"
                                                 id="choose-seat--seat{{ $seat->seat_id }}"
                                                 class="choose-seat--seat {{ $seat->seat_type }} {{ $seat->seat_status }}"
-                                                data-value="{{ $seat->showtime_id }}" data-value1="{{ $seat->room_id }}">
-                                                {{ $seat->seat_name }}</div>
+                                                data-value="{{ $seat->showtime_id }}" data-value1="{{ $seat->room_id }}" data-value2="{{ $seat->seat_id }}" >
+                                                {{ $seat->seat_name }} </div>
                                         @endif
                                     @endforeach
                                 </div>
@@ -417,7 +420,7 @@
                                             <div onclick="toggleFocusCSS(this), toggleSeatAndStartCountdown('choose-seat--seat{{ $seat->seat_id }}')"
                                                 id="choose-seat--seat{{ $seat->seat_id }}"
                                                 class="choose-seat--seat {{ $seat->seat_type }} {{ $seat->seat_status }}"
-                                                data-value="{{ $seat->showtime_id }}" data-value1="{{ $seat->room_id }}">
+                                                data-value="{{ $seat->showtime_id }}" data-value1="{{ $seat->room_id }}" data-value2="{{ $seat->seat_id }}">
                                                 {{ $seat->seat_name }}</div>
                                         @endif
                                     @endforeach
@@ -428,7 +431,7 @@
                                             <div onclick="toggleFocusCSS(this), toggleSeatAndStartCountdown('choose-seat--seat{{ $seat->seat_id }}')"
                                                 id="choose-seat--seat{{ $seat->seat_id }}"
                                                 class="choose-seat--seat {{ $seat->seat_type }} {{ $seat->seat_status }}"
-                                                data-value="{{ $seat->showtime_id }}" data-value1="{{ $seat->room_id }}">
+                                                data-value="{{ $seat->showtime_id }}" data-value1="{{ $seat->room_id }}" data-value2="{{ $seat->seat_id }}">
                                                 {{ $seat->seat_name }}</div>
                                         @endif
                                     @endforeach
@@ -439,7 +442,7 @@
                                             <div onclick="toggleFocusCSS(this), toggleSeatAndStartCountdown('choose-seat--seat{{ $seat->seat_id }}')"
                                                 id="choose-seat--seat{{ $seat->seat_id }}"
                                                 class="choose-seat--seat {{ $seat->seat_type }} {{ $seat->seat_status }}"
-                                                data-value="{{ $seat->showtime_id }}" data-value1="{{ $seat->room_id }}">
+                                                data-value="{{ $seat->showtime_id }}" data-value1="{{ $seat->room_id }}" data-value2="{{ $seat->seat_id }}">
                                                 {{ $seat->seat_name }}</div>
                                         @endif
                                     @endforeach
@@ -451,7 +454,7 @@
                                             <div onclick="toggleFocusCSS(this), toggleSeatAndStartCountdown('choose-seat--seat{{ $seat->seat_id }}')"
                                                 id="choose-seat--seat{{ $seat->seat_id }}"
                                                 class="choose-seat--seat {{ $seat->seat_type }} {{ $seat->seat_status }}"
-                                                data-value="{{ $seat->showtime_id }}" data-value1="{{ $seat->room_id }}">
+                                                data-value="{{ $seat->showtime_id }}" data-value1="{{ $seat->room_id }}" data-value2="{{ $seat->seat_id }}">
                                                 {{ $seat->seat_name }}</div>
                                         @endif
                                     @endforeach
@@ -462,7 +465,7 @@
                                             <div onclick="toggleFocusCSS(this), toggleSeatAndStartCountdown('choose-seat--seat{{ $seat->seat_id }}')"
                                                 id="choose-seat--seat{{ $seat->seat_id }}"
                                                 class="choose-seat--seat {{ $seat->seat_type }} {{ $seat->seat_status }}"
-                                                data-value="{{ $seat->showtime_id }}" data-value1="{{ $seat->room_id }}">
+                                                data-value="{{ $seat->showtime_id }}" data-value1="{{ $seat->room_id }}" data-value2="{{ $seat->seat_id }}">
                                                 {{ $seat->seat_name }}</div>
                                         @endif
                                     @endforeach
@@ -473,7 +476,7 @@
                                             <div onclick="toggleFocusCSS(this), toggleSeatAndStartCountdown('choose-seat--seat{{ $seat->seat_id }}')"
                                                 id="choose-seat--seat{{ $seat->seat_id }}"
                                                 class="choose-seat--seat {{ $seat->seat_type }} {{ $seat->seat_status }}"
-                                                data-value="{{ $seat->showtime_id }}" data-value1="{{ $seat->room_id }}">
+                                                data-value="{{ $seat->showtime_id }}" data-value1="{{ $seat->room_id }}" data-value2="{{ $seat->seat_id }}">
                                                 {{ $seat->seat_name }}</div>
                                         @endif
                                     @endforeach
@@ -484,7 +487,7 @@
                                             <div onclick="toggleFocusCSS(this), toggleSeatAndStartCountdown('{{ $seat->seat_id }}')"
                                                 id="{{ $seat->seat_id }}"
                                                 class="choose-seat--seat {{ $seat->seat_type }} {{ $seat->seat_status }}"
-                                                data-value="{{ $seat->showtime_id }}" data-value1="{{ $seat->room_id }}">
+                                                data-value="{{ $seat->showtime_id }}" data-value1="{{ $seat->room_id }}" data-value2="{{ $seat->seat_id }}">
                                                 {{ $seat->seat_name }}</div>
                                         @endif
                                     @endforeach
@@ -495,7 +498,7 @@
                                             <div onclick="toggleFocusCSS(this), toggleSeatAndStartCountdown('{{ $seat->seat_id }}')"
                                                 id="{{ $seat->seat_id }}"
                                                 class="choose-seat--seat {{ $seat->seat_type }} {{ $seat->seat_status }}"
-                                                data-value="{{ $seat->showtime_id }}" data-value1="{{ $seat->room_id }}">
+                                                data-value="{{ $seat->showtime_id }}" data-value1="{{ $seat->room_id }}" data-value2="{{ $seat->seat_id }}">
                                                 {{ $seat->seat_name }}</div>
                                         @endif
                                     @endforeach
@@ -506,7 +509,7 @@
                                             <div onclick="toggleFocusCSS(this), toggleSeatAndStartCountdown('{{ $seat->seat_id }}')"
                                                 id="{{ $seat->seat_id }}"
                                                 class="choose-seat--seat {{ $seat->seat_type }} {{ $seat->seat_status }}"
-                                                data-value="{{ $seat->showtime_id }}" data-value1="{{ $seat->room_id }}">
+                                                data-value="{{ $seat->showtime_id }}" data-value1="{{ $seat->room_id }}" data-value2="{{ $seat->seat_id }}">
                                                 {{ $seat->seat_name }}</div>
                                         @endif
                                     @endforeach
@@ -517,7 +520,7 @@
                                             <div onclick="toggleFocusCSS(this), toggleSeatAndStartCountdown('{{ $seat->seat_id }}')"
                                                 id="{{ $seat->seat_id }}"
                                                 class="choose-seat--seat {{ $seat->seat_type }} {{ $seat->seat_status }}"
-                                                data-value="{{ $seat->showtime_id }}" data-value1="{{ $seat->room_id }}">
+                                                data-value="{{ $seat->showtime_id }}" data-value1="{{ $seat->room_id }}" data-value2="{{ $seat->seat_id }}">
                                                 {{ $seat->seat_name }}</div>
                                         @endif
                                     @endforeach
@@ -528,7 +531,7 @@
                                             <div onclick="toggleFocusCSS(this), toggleSeatAndStartCountdown('{{ $seat->seat_id }}')"
                                                 id="{{ $seat->seat_id }}"
                                                 class="choose-seat--seat {{ $seat->seat_type }} {{ $seat->seat_status }}"
-                                                data-value="{{ $seat->showtime_id }}" data-value1="{{ $seat->room_id }}">
+                                                data-value="{{ $seat->showtime_id }}" data-value1="{{ $seat->room_id }}" data-value2="{{ $seat->seat_id }}">
                                                 {{ $seat->seat_name }}</div>
                                         @endif
                                     @endforeach
@@ -629,7 +632,6 @@
                             <input type="hidden" name="movie_seats_couple" value="">
                             <input type="hidden" name="movie_screen" value="">
                             <input type="hidden" name="movie_time" value="">
-                            <input type="hidden" name="movie_date" value="">
                         </div>
                     </div>
 
