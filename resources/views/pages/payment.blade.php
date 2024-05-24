@@ -30,35 +30,35 @@
                 <h1>Payment</h1>
               </div>
               <div class="cd-info-field--payment">
-                <img src="/le cinéma/assets/img/momo.png" alt="" class="cd-img-momo">
+                <img src="{{asset('./public/frontend/images/momo.png')}}" alt="" class="cd-img-momo">
                 <p>Pay with Momo</p>
               </div>
               <div class="cd-info-field--payment">
-                <img src="/le cinéma/assets/img/mastercard.png" alt="" class="cd-img-mc">
+                <img src="{{asset('./public/frontend/images/mastercard.png')}}" alt="" class="cd-img-mc">
                 <p>Payment via Domestic Card</p>
               </div>
               <div class="cd-info-field--payment">
-                <img src="/le cinéma/assets/img/mastercard.png" alt="" class="cd-img-mc">
+                <img src="{{asset('./public/frontend/images/mastercard.png')}}" alt="" class="cd-img-mc">
                 <p>Payment via International Card</p>
               </div>
-              <div class="cd-info-field-voucher">
+              {{-- <div class="cd-info-field-voucher">
                 <p>Enter voucher (if owned)</p>
                 <div class="cd-info-field--enter-voucher">
                   <input type="text" name="" id="voucher">
                   <button>Apply</button>
                 </div>
-              </div>
+              </div> --}}
               <div class="cd-input-field--proceed">
                 <button>SUBMIT PAYMENT</button>
               </div>
             </div>
 
-            <div class="cd-receipt">
+            {{-- <div class="cd-receipt">
               <h1 id="cd-movie-name">TAYLOR SWIFT | THE ERAS TOUR</h1>
               <span>TICKET HOLDING TIME:</span>
               <span id="cd-timer">05:00</span>
-              <p id="cd-location">ABC CINEMA</p>
-              <p id="cd-exact-location">Abc Xyz Lmnop</p>
+              <p id="cd-location">CINOVA CINEMA</p>
+              <p id="cd-exact-location">Hàn Thuyên Street, Neighborhood 6, Linh Trung Ward, Thủ Đức District, Ho Chi Minh City</p>
               <p id="cd-date">Date and Time</p>
               <p id="cd-exact-date">Sunday 10/09/2024 00:00</p>
               <p>
@@ -83,7 +83,7 @@
                 <h1>TOTAL</h1>
                 <p id="cd-total">109.000đ</p>
               </div>
-            </div>
+            </div> --}}
           </div>
         </div>
     </div>

@@ -28,27 +28,55 @@
                 <h1>Contact Details</h1>
                 <h4>(*): Field must be filled</h4>
               </div>
-              <form role="form" id="form1" action="{{ URL::to('/save-info-checkout') }}" method="post" enctype="multipart/form-data">
+              <form role="form" id="form1" action="{{ URL::to('/payment') }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
-              <div class="cd-input-field--div cd-input-field--email">
-                <p>Name <span>*</span></p>
-                <input type="text" class="cd-input cd-email" name="ticketbooked_name">
+                @if(Session::get('user_id')!=NULL)
+                @foreach ($list_user as $key=>$user)
+                @if($user->user_id==Session::get('user_id'))
+                <div class="cd-input-field--div cd-input-field--email">
+                    <p>Name <span>*</span></p>
+                  <input type="text" class="cd-input cd-email" name="user_name" value="{{$user->user_name}}">
+                </div>
+                <div class="cd-input-field--div cd-input-field--email">
+                  <p>E-mail <span>*</span></p>
+                  <input type="text" class="cd-input cd-email" name="user_email" value="{{$user->user_email}}">
+                </div>
+                <div class="cd-input-field--div cd-input-field--phone-num" >
+                    <p>Phone Number <span>*</span></p>
+                    <div class="cd-input-field--double">
+                      <input type="text" class="cd-input cd-phone-num" name="user_phone" value="{{$user->user_phone}}">
+                    </div>
+                </div>
+                <input type="hidden" class="cd-input cd-phone-num" name="user_isguest" value="0">
+                <div class="cd-input-field--proceed">
+                  <button>PROCEED</button>
+                </div>
               </div>
-              <div class="cd-input-field--div cd-input-field--email">
-                <p>E-mail <span>*</span></p>
-                <input type="text" class="cd-input cd-email" name="ticketbooked_email">
+                @endif
+                @endforeach
+                @else
+                <div class="cd-input-field--div cd-input-field--email">
+                    <p>Name <span>*</span></p>
+                  <input type="text" class="cd-input cd-email" name="user_name" >
+                </div>
+                <div class="cd-input-field--div cd-input-field--email">
+                  <p>E-mail <span>*</span></p>
+                  <input type="text" class="cd-input cd-email" name="user_email" >
+                </div>
+                <div class="cd-input-field--div cd-input-field--phone-num" >
+                    <p>Phone Number <span>*</span></p>
+                    <div class="cd-input-field--double">
+                      <input type="text" class="cd-input cd-phone-num" name="user_phone" >
+                    </div>
+                </div>
+                <input type="hidden" class="cd-input cd-phone-num" name="user_isguest" value="1">
+                <div class="cd-input-field--proceed">
+                  <button>PROCEED</button>
+                </div>
               </div>
-              <div class="cd-input-field--div cd-input-field--phone-num" >
-                  <p>Phone Number <span>*</span></p>
-                  <div class="cd-input-field--double">
-                    <input type="text" class="cd-input cd-phone-num" name="ticketbooked_phone">
-                  </div>
-              </div>
-              <div class="cd-input-field--proceed">
-                <button>PROCEED</button>
-              </div>
-            </div>
+                @endif
 
+              </form>
             <div class="cd-receipt">
                 @foreach ( $list_movie as $key => $movie)
               <h1 id="cd-movie-name">{{ $movie->movie_name }}</h1>
