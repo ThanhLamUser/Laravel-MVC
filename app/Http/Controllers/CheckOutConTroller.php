@@ -37,11 +37,16 @@ class CheckOutConTroller extends Controller
         }
         $movie_screen = $request->movie_screen;
         $movie_time = $request->movie_time;
+
         $movie_seats = $request->movie_seats;
+
         $movie_seats_array = explode(',', $movie_seats);
         $movie_seats_couple = $request->movie_seats_couple;
         $movie_seats_couple_array = explode(',', $movie_seats_couple);
         $temp_price_calc = $request->temp_price_calc;
+
+        $list_popcorndrink = DB::table('tbl_popcorndrink')->whereIn('popcorndrink_id', $popcornQuantities)->get();
+
         $list_movie = DB::table('tbl_movie')->where('movie_id', $movieid)->get();
         $list_ticket = DB::table('tbl_ticket')->get();
         $time_movie = DB::table('tbl_showtime')->where('showtime_id', $movie_time)->get();
@@ -72,9 +77,43 @@ class CheckOutConTroller extends Controller
             DB::table('tbl_bookingdetail')->insert($data_bookingdetail);
         }
 
+        if (!empty($popcornQuantities)) {
+            $order_data = [
+                'booking_id' => $list_booking,
+                'order_price' => 0,
+                'order_date' => now(),
+            ];
+
+            $order_id = DB::table('tbl_order')->insertGetId($order_data);
+
+            $total_order_price = 0;
+            foreach ($popcornQuantities as $combo_id => $quantity) {
+                $combo = DB::table('tbl_popcorndrink')->where('popcorndrink_id', $combo_id)->first();
+
+                if ($combo) {
+                    $orderdetail_price = $combo->popcorndrink_price * $quantity;
+                    $total_order_price += $orderdetail_price;
+
+                    $order_detail_data = [
+                        'order_id' => $order_id,
+                        'popcorndrink_id' => $combo_id,
+                        'orderdetail_quantity' => $quantity,
+                        'orderdetail_price' => $orderdetail_price,
+                    ];
+
+                    DB::table('tbl_orderdetail')->insert($order_detail_data);
+                }
+            }
+
+            // Cập nhật tổng giá trị đơn hàng
+            DB::table('tbl_order')
+                ->where('order_id', $order_id)
+                ->update(['order_price' => $total_order_price]);
+        }
 
 
         return view('pages.checkout') ->with('list_user', $list_user)
+                                    ->with('list_popcorndrink', $list_popcorndrink)
                                     ->with('list_movie', $list_movie)
                                      ->with('list_ticket', $list_ticket)
                                      ->with('screen_movie', $screen_movie)

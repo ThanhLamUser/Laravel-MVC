@@ -576,16 +576,16 @@
                                                 </p>
                                                 <div class="buy-popcorn--btn">
                                                     <div class="minus-btn"
-                                                        onclick="decreaseQuantity('popcorn-combo-{{ $key + 1 }}')">
+                                                        onclick="decreaseQuantity('popcorn-combo-{{ $popcorndrink->popcorndrink_id }}')">
                                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                                             <path
                                                                 d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z" />
                                                         </svg>
                                                     </div>
                                                     <input readonly value="0"
-                                                        id="popcorn-combo-{{ $key + 1 }}"name="popcorn_combo_{{ $key + 1 }}" data-value1="{{ $popcorndrink->popcorndrink_price }}">
+                                                        id="popcorn-combo-{{ $popcorndrink->popcorndrink_id }}"name="popcorn_combo_{{ $popcorndrink->popcorndrink_id }}" data-value1="{{ $popcorndrink->popcorndrink_price }}">
                                                     <div class="plus-btn"
-                                                        onclick="increaseQuantity('popcorn-combo-{{ $key + 1 }}')">
+                                                        onclick="increaseQuantity('popcorn-combo-{{ $popcorndrink->popcorndrink_id }}')">
                                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                                                             <path
                                                                 d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
