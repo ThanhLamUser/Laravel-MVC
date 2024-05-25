@@ -15,9 +15,7 @@ return new class extends Migration
             $table->increments('ticket_id');
             $table->string('ticket_name');
             $table->string('ticket_type');
-            $table->integer('seat_id');
-            // $table->integer('ticketbooked_id');
-            $table->integer('showtime_id');
+            $table->integer('ticket_price');
             $table->timestamps();
         });
     }

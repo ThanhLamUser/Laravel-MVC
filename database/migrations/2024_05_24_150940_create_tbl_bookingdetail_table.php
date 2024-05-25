@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('bookingdetail_id');
             $table->integer('booking_id');
             $table->integer('seat_id')  ;
-            $table->integer('booking_price');
+            // $table->integer('booking_price');
             $table->timestamps();
         });
     }

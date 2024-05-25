@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tbl_booking', function (Blueprint $table) {
             $table->increments('booking_id');
             $table->integer('showtime_id');
-            $table->integer('user_id');
+            $table->integer('user_id')->nullable();
             $table->string('booking_status');
             $table->integer('booking_total');
             $table->timestamps();
