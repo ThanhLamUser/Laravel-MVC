@@ -147,4 +147,7 @@ class CheckOutConTroller extends Controller
 
         return view('pages.payment')->with('list_booking', $list_booking);
     }
+    public function ticket(Request $request){
+        return view('pages.paymentsucess');
+    }
 }

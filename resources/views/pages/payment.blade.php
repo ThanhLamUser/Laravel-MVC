@@ -29,29 +29,42 @@
               <div class="cd-info-field--heading">
                 <h1>Payment</h1>
               </div>
-              <div class="cd-info-field--payment">
-                <img src="{{asset('./public/frontend/images/momo.png')}}" alt="" class="cd-img-momo">
-                <p>Pay with Momo</p>
-              </div>
-              <div class="cd-info-field--payment">
-                <img src="{{asset('./public/frontend/images/mastercard.png')}}" alt="" class="cd-img-mc">
-                <p>Payment via Domestic Card</p>
-              </div>
-              <div class="cd-info-field--payment">
-                <img src="{{asset('./public/frontend/images/mastercard.png')}}" alt="" class="cd-img-mc">
-                <p>Payment via International Card</p>
-              </div>
-              {{-- <div class="cd-info-field-voucher">
-                <p>Enter voucher (if owned)</p>
-                <div class="cd-info-field--enter-voucher">
-                  <input type="text" name="" id="voucher">
-                  <button>Apply</button>
+
+              <form id="payment-form"  action="{{ route('payment.process') }}"  method="POST">
+                @csrf
+                <div class="cd-info-field--payment">
+                  <input type="radio" id="momo" class="input_payment" name="payment_method" value="momo">
+                  <label for="momo" style="display: flex;cursor: pointer;padding:10px 0px 10px 0px; ">
+                    <img src="{{asset('./public/frontend/images/momo.png')}}" alt="" class="cd-img-momo">
+                    <p style="width: 438px;">Pay with Momo</p>
+                  </label>
                 </div>
-              </div> --}}
-              <div class="cd-input-field--proceed">
-                <button>SUBMIT PAYMENT</button>
-              </div>
+
+                <div class="cd-info-field--payment">
+                  <input type="radio" id="domestic_card" class="input_payment" name="payment_method"  value="domestic_card">
+                  <label for="domestic_card" style="display: flex;cursor: pointer;padding:10px 0px 10px 0px;" >
+                    <img src="{{asset('./public/frontend/images/mastercard.png')}}"  alt="" class="cd-img-mc">
+                    <p style="width: 438px;">Payment via Domestic Card</p>
+                  </label>
+                </div>
+
+                {{-- Uncomment if voucher feature is needed in the future
+                <div class="cd-info-field-voucher">
+                  <p>Enter voucher (if owned)</p>
+                  <div class="cd-info-field--enter-voucher">
+                    <input type="text" name="voucher" id="voucher">
+                    <button type="button">Apply</button>
+                  </div>
+                </div>
+                --}}
+
+                <div class="cd-input-field--proceed">
+                  <button type="submit">SUBMIT PAYMENT</button>
+                </div>
+              </form>
             </div>
+          </div>
+
 
             {{-- <div class="cd-receipt">
               <h1 id="cd-movie-name">TAYLOR SWIFT | THE ERAS TOUR</h1>

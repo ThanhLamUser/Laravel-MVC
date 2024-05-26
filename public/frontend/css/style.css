@@ -1528,7 +1528,7 @@
   }
 
   .cd-path--step-active {
-    color: #d62222;
+    color: #deabab;
   }
 
   .cd-path--separator {
@@ -1633,8 +1633,8 @@
     font-size: 1.8rem;
     font-weight: 500;
     color: white;
-    background-color: #d62222;
-    border: 1px solid #d62222;
+    background-color: #deabab;
+    border: 1px solid #deabab;
     border-radius: 4px;
     transition: 0.2s ease;
   }
@@ -1708,8 +1708,8 @@
     font-size: 1.4rem;
     font-weight: 500;
     color: white;
-    background-color: #d62222;
-    border: 1px solid #d62222;
+    background-color: #deabab;
+    border: 1px solid #deabab#deabab;
     border-radius: 4px;
     transition: 0.2s ease;
   }
@@ -1997,8 +1997,8 @@
   }
 
   .user-buttons--active {
-    background-color: #d62222;
-    border: 1px solid #d62222;
+    background-color: #deabab;
+    border: 1px solid #deabab;
     color: white;
   }
 
@@ -2195,8 +2195,8 @@
   }
 
   .user-buttons--active {
-    background-color: #d62222;
-    border: 1px solid #d62222;
+    background-color: #deabab;
+    border: 1px solid #deabab;
     color: white;
   }
 
@@ -2435,8 +2435,8 @@
   }
 
   .account-details-buttons input {
-    background-color: #d62222;
-    border: 2px solid #d62222;
+    background-color: #deabab;
+    border: 2px solid #deabab;
     border-radius: 5px;
     color: white;
     margin-left: 12px;
@@ -2513,8 +2513,8 @@
     font-weight: 700;
     padding: 6px 20px;
     color: white;
-    background-color: #d62222;
-    border: 1px solid #d62222;
+    background-color: #deabab;
+    border: 1px solid #deabab;
     border-radius: 6px;
     box-shadow: 2px 2px 4px gray;
     transition: 0.2s ease;
@@ -3249,7 +3249,7 @@
 .adm__add-movie h1 {
   margin: 0;
   padding: 20px 30px;
-  background-color: #d62222;
+  background-color: #deabab;
   color: white;
 }
 
@@ -3273,7 +3273,7 @@
 .adm__add-movie--container---movie---details p {
   margin: 0 0 8px 0;
   padding: 0;
-  color: #d62222;
+  color: #deabab;
   font-size: 1.6rem;
   font-weight: 500;
   display: flex;
@@ -3283,7 +3283,7 @@
 .adm__add-movie--container---movie---details svg {
   width: 16px;
   height: 16px;
-  fill: #d62222;
+  fill: #deabab;
   margin-left: 6px;
 }
 
@@ -3373,7 +3373,7 @@
 .adm__add-movie--container---showtime---details p {
   margin: 0 0 8px 0;
   padding: 0;
-  color: #d62222;
+  color: #deabab;
   font-size: 1.6rem;
   font-weight: 500;
   display: flex;
@@ -3424,7 +3424,7 @@
   line-height: 2.2rem;
   font-weight: 700;
   background-color: transparent;
-  border: 3px solid #d62222;
+  border: 3px solid #deabab;
   transition: 0.2s ease;
 }
 
@@ -3447,7 +3447,7 @@
   line-height: 3rem;
   font-size: 1.6rem;
   font-weight: 700;
-  background-color: #d62222;
+  background-color: #deabab;
   color: white;
   border: none;
   border-radius: 4px;
@@ -3539,14 +3539,14 @@
 }
 
 #editDetails-block svg {
-  fill: #d62222;
+  fill: #deabab;
   transition: 0.2s ease;
 }
 
 #editDetails-block:hover {
   cursor: pointer;
   color: white;
-  background-color: #d62222;
+  background-color: #deabab;
 }
 
 #editDetails-block:hover svg{
@@ -3621,7 +3621,7 @@
 .adm__dashboard-down h1 {
   margin: 0;
   padding: 20px 30px;
-  color: #d62222;
+  color: #deabab;
   background-color: white;
 }
 
@@ -3671,14 +3671,14 @@
   text-align: center;
   color: black;
   background-color: transparent;
-  border: 1px solid #d62222;
+  border: 1px solid #deabab;
   border-radius: 4px;
   transition: 0.2s ease;
 }
 
 .adm__dashboard-down button:hover {
   color: white;
-  background-color: #d62222;
+  background-color: #deabab;
   cursor: pointer;
 }
 
@@ -3700,7 +3700,7 @@
 
 .adm__dashboard-down--pagination svg:hover {
   cursor: pointer;
-  fill: #d62222;
+  fill: #deabab;
 }
 
 .adm__dashboard-down--pagination svg:active {
@@ -3720,8 +3720,8 @@
   margin: 0 8px;
   width: 30px;
   height: 30px;
-  background-color: #d62222;
-  border: 1px solid #d62222;
+  background-color: #deabab;
+  border: 1px solid #deabab;
   border-radius: 50%;
 }
 
@@ -3771,8 +3771,8 @@
 
 .adm__dashboard-down--pagination---li.active:hover {
   cursor: pointer;
-  background-color: #d62222;
-  border: 1px solid #d62222;
+  background-color: #deabab;
+  border: 1px solid #deabab;
 }
 
 .adm__dashboard-down--pagination---li.active:active {
@@ -3794,7 +3794,7 @@
 .adm__details h1 {
   margin: 0;
   padding: 20px 30px;
-  background-color: #d62222;
+  background-color: #deabab;
   color: white;
 }
 
@@ -3812,7 +3812,7 @@
 .adm__details--container h1 {
   padding-left: 0;
   background-color: white;
-  color: #d62222;
+  color: #deabab;
 }
 
 .adm__details--container---contact .a{
@@ -4045,3 +4045,12 @@
   .offer-text button:active {
     transform: translateY(2px);
   }
+.input_payment{
+    height: unset;
+    padding-left: unset;
+    background-color: unset;
+    border: unset;
+    border-radius: unset;
+    box-shadow: unset;
+    outline: unset;
+}

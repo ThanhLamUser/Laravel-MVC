@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PaymentController;
 
 // Fronted
 Route::get('/', 'App\Http\Controllers\HomeController@index');
-Route::get('/homepage', 'App\Http\Controllers\HomeController@index');
+Route::get('/homepage', 'App\Http\Controllers\HomeController@index')->name('home');
 Route::get('/now-showing', 'App\Http\Controllers\HomeController@now_showing');
 Route::get('/coming-soon', 'App\Http\Controllers\HomeController@coming_soon');
 Route::get('/theater', 'App\Http\Controllers\HomeController@theater');
@@ -24,8 +24,11 @@ Route::get('/movie/{movie_id}', 'App\Http\Controllers\HomeController@movie_detai
 
 //Checkout
 Route::post('/checkout','App\Http\Controllers\CheckOutController@save_checkout_list');
-
 Route::post('/payment','App\Http\Controllers\CheckOutController@save_payment_list');
+Route::get('/ticket','App\Http\Controllers\CheckOutController@ticket')->name('ticket');
+
+Route::post('/payment/process', [PaymentController::class, 'processPayment'])->name('payment.process');
+Route::get('/payment/callback', [PaymentController::class, 'handleCallback'])->name('payment.callback');
 
 
 //User
