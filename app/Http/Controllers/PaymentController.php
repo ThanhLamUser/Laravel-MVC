@@ -7,6 +7,9 @@ use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PaymentSuccess;
+use App\Models\User;
 
 class PaymentController extends Controller
 {
@@ -153,16 +156,34 @@ class PaymentController extends Controller
         $expectedSignature = hash_hmac('sha256', $rawHash, $secretKey);
 
         if ($signature === $expectedSignature) {
+            $paymentId = Session::get('payment_id');
+            $userId = Session::get('user_id'); // Assuming you have user_id stored in session
+
+            if (!$userId) {
+                return redirect()->route('home')->with('error', 'User ID not found in session.');
+            }
+
+            // Truy xuất thông tin người dùng từ cơ sở dữ liệu
+            $user = DB::table('tbl_user')->where('user_id', $userId)->first();
+
+            if (!$user) {
+                return redirect()->route('home')->with('error', 'User not found.');
+            }
+
+            $orderDetails = "Order ID: " . $request->input('orderId') . ", Amount: " . $request->input('amount'); // Customize as needed
+
             if ($request->input('resultCode') == 0) {
                 // Thanh toán thành công
-                $paymentId = Session::get('payment_id');
                 DB::table('tbl_payment')->where('payment_id', $paymentId)->update([
                     'payment_status' => 'Success'
                 ]);
+
+                // Gửi email xác nhận
+                Mail::to($user->user_email)->send(new PaymentSuccess($user, $orderDetails));
+
                 return redirect()->route('ticket')->with('success', 'Payment successful.');
             } else {
                 // Thanh toán thất bại
-                $paymentId = Session::get('payment_id');
                 DB::table('tbl_payment')->where('payment_id', $paymentId)->update([
                     'payment_status' => 'Failed'
                 ]);
