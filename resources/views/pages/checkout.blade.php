@@ -22,7 +22,7 @@
             </div>
           </div>
 
-          <div class="cd-container">
+          <div class="cd-container" style="height: unset">
             <div class="cd-info-field">
               <div class="cd-info-fied--heading">
                 <h1>Contact Details</h1>
