@@ -23,7 +23,7 @@
 
             <div class="movie-ticket-info">
                 <div class="mti-up">
-                    @foreach (@$list_movie as $key => $movie)
+                    @foreach ($list_movie as $key => $movie)
                     <img src="{{ URL::to('public/upload/movie/' . $movie->movie_poster) }}" alt="" class="mti-up--img">
                     @endforeach
                     <div class="mti-up--container">
@@ -69,7 +69,7 @@
                 <div class="mti-down">
                     <div class="mti-down--container">
                         <p>Ticket ID</p>
-                        <p>{{ $booking->booking_id }}</p>
+                        <p>00000{{ $booking->booking_id }}</p>
                         <div>
                             <div class="mti-down--barcode"></div>
                         </div>

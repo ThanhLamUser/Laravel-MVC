@@ -201,8 +201,8 @@ class CheckOutConTroller extends Controller
         $seat_couple = Session::get('seat_couple');
 
         $booking = DB::table('tbl_booking')->where('booking_id', $bookingId)->first();
-
         // $movieDetails = DB::table('tbl_movie')->where('movie_id', $movieid)->get();
+        $payment_status = DB::table('tbl_payment')->where('booking_id', $bookingId)->where('payment_status', 'Success')->get();
 
         // Lấy thông tin chi tiết vé từ bảng booking_detail
         $bookingDetails = DB::table('tbl_bookingdetail')->where('booking_id', $bookingId)->get();
@@ -212,7 +212,10 @@ class CheckOutConTroller extends Controller
 
         // Lấy thông tin chi tiết đơn hàng từ bảng order_detail
         $orderDetails = DB::table('tbl_orderdetail')->where('order_id', $orderId)->get();
-
+        if($payment_status->isEmpty()){
+            return view('pages.not_found');
+        }
+        else{
         return view('pages.paymentsucess', [
             'booking' => $booking,
             'bookingDetails' => $bookingDetails,
@@ -224,5 +227,6 @@ class CheckOutConTroller extends Controller
             'seat_single' =>$seat_single,
             'seat_couple' =>$seat_couple
         ]);
+    }
     }
 }
