@@ -107,29 +107,8 @@
                                 <input type="text" name="movie_name" id="" placeholder="Insert movie name...">
                             </div>
                             <div>
-                                <p>
-                                    Genre
-
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                        <title>Ctrl + Click to select multiple genres</title>
-                                        <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/>
-                                    </svg>
-                                </p>
-                                <select name="movie_category" id="genre" multiple>
-                                    <option value="Action">Action</option>
-                                    <option value="Adventure">Adventure</option>
-                                    <option value="Comedy">Comedy</option>
-                                    <option value="Drama">Drama</option>
-                                    <option value="Fantasy">Fantasy</option>
-                                    <option value="Historical">Historical</option>
-                                    <option value="Horror">Horror</option>
-                                    <option value="Musical">Musical</option>
-                                    <option value="Noir">Noir</option>
-                                    <option value="Romance">Romance</option>
-                                    <option value="Science">Science</option>
-                                    <option value="Thriller">Thriller</option>
-                                    <option value="Western">Western</option>
-                                </select>
+                                <p>Genre</p>
+                                <input type="text" name="movie_category" id="" placeholder="Insert category name...">
                             </div>
                         </div>
 
@@ -188,6 +167,12 @@
                             <div>
                                 <p>Iframe</p>
                                 <input style="width:95%" type="text" name="movie_iframe" id="" placeholder="Insert iframe...">
+                            </div>
+                        </div>
+                        <div class="">
+                            <div>
+                                <p>Poster</p>
+                                <input style="width:95%" type="text" name="movie_poster" id="" placeholder="Insert poster...">
                             </div>
                         </div>
                         <div class="a">

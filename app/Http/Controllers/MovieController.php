@@ -44,6 +44,7 @@ class MovieController extends Controller
         $data['movie_desc'] = $request -> movie_desc;
         $data['movie_status'] = $request -> movie_status;
         $data['movie_iframe'] = $request -> movie_iframe;
+        $data['movie_poster'] = $request -> movie_poster;
         $get_image = $request->file('movie_img');
 
         if ($get_image) {
@@ -55,6 +56,7 @@ class MovieController extends Controller
         } else {
             $data['movie_img'] = '';
         }
+
         DB::table('tbl_movie')->insert($data);
         Session::put('message_movie','Thêm danh mục sản phẩm thành công');
         return Redirect::to('/list-movie');
@@ -74,35 +76,10 @@ class MovieController extends Controller
         $edit_movie = DB::table('tbl_movie') -> where('movie_id',$movie_id)->get();
         return view('admin.edit_movie')->with('edit_movie', $edit_movie);
     }
-    // public function update_movie(Request $request,$movie_id){
-    //     $data = array();
-    //     $data['movie_name'] = $request -> movie_name;
-    //     $data['movie_img'] = $request -> movie_img;
-    //     $data['movie_category'] = $request -> movie_category;
-    //     $data['movie_time'] = $request -> movie_time;
-    //     $data['movie_datestart'] = $request -> movie_datestart;
-    //     $data['movie_age'] = $request -> movie_age;
-    //     $data['movie_direct'] = $request -> movie_direct;
-    //     $data['movie_actor'] = $request -> movie_actor;
-    //     $data['movie_desc'] = $request -> movie_desc;
-    //     $get_image = $request->file('movie_img');
 
-    //     if ($get_image) {
-    //         $get_name_image = $get_image->getClientOriginalName();
-    //         $name_image = current(explode('.', $get_name_image));
-    //         $new_image = $name_image . rand(0, 99) . '.' . $get_image->getClientOriginalExtension();
-    //         $get_image->move('public/upload/movie', $new_image);
-    //         $data['movie_img'] = $new_image;
-    //     } else {
-    //         $data['movie_img'] = '';
-    //     }
-    //     DB::table('tbl_movie') ->  where('movie_id',$movie_id) ->update($data);
-    //     Session::put('message_movie','Cập nhật danh mục sản phẩm thành công');
-    //     return Redirect::to('/list-movie');
-    // }
     public function update_movie(Request $request, $movie_id){
         $this ->AuthLogin();
-        $data = $request->only(['movie_name', 'movie_category', 'movie_time', 'movie_datestart', 'movie_age', 'movie_direct', 'movie_actor', 'movie_desc','movie_iframe']);
+        $data = $request->only(['movie_name', 'movie_category', 'movie_time', 'movie_datestart', 'movie_age', 'movie_direct', 'movie_actor', 'movie_desc','movie_iframe','movie_poster']);
 
         if ($request->hasFile('movie_img')) {
             $get_image = $request->file('movie_img');

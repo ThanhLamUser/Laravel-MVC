@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
-
+use App\Http\Controllers\CheckOutController;
 // Fronted
 Route::get('/', 'App\Http\Controllers\HomeController@index');
 Route::get('/homepage', 'App\Http\Controllers\HomeController@index')->name('home');
@@ -24,12 +24,16 @@ Route::get('/movie/{movie_id}', 'App\Http\Controllers\HomeController@movie_detai
 
 //Checkout
 Route::post('/checkout','App\Http\Controllers\CheckOutController@save_checkout_list');
-Route::post('/payment','App\Http\Controllers\CheckOutController@save_payment_list');
+
+Route::post('/payment', 'App\Http\Controllers\CheckOutController@save_payment_list');
+
+Route::fallback(function () {
+    abort(404);
+});
 Route::get('/ticket','App\Http\Controllers\CheckOutController@ticket')->name('ticket');
 
 Route::post('/payment/process', [PaymentController::class, 'processPayment'])->name('payment.process');
 Route::get('/payment/callback', [PaymentController::class, 'handleCallback'])->name('payment.callback');
-
 
 //User
 Route::post('/save-user','App\Http\Controllers\UserController@save_user');

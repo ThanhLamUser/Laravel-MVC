@@ -71,6 +71,7 @@ class HomeController extends Controller
     }
     //End function admin page
     public function buy_ticket_movie($movie_id){
+
         $movie_showtime = DB::table('tbl_movie')->where('movie_status','1')->orderby('movie_id','desc')->get();
         $movie_showtime_join = DB::table('tbl_showtime')
         ->join('tbl_movie','tbl_movie.movie_id','=','tbl_showtime.movie_id')->where('movie_status','1')->orderby('showtime_date','desc')->limit(1)->get();
@@ -81,6 +82,7 @@ class HomeController extends Controller
         ->orderby('tbl_movie.movie_id','desc')->orderby('tbl_showtime.showtime_timeslot','asc')->get();
         $movie_popcorndrink = DB::table('tbl_popcorndrink')->orderby('popcorndrink_id','asc')->get();
         $movie_by_id = DB::table('tbl_movie') -> where('movie_id',$movie_id)->get();
+
         $uniqueDates = DB::table('tbl_showtime')
         ->select('showtime_date')
         ->distinct()
@@ -112,12 +114,16 @@ class HomeController extends Controller
        ->orderby('tbl_showtime.showtime_timeslot','desc')
        ->orderby('tbl_seat.seat_id','asc')
        ->get();
+       if($movie_by_id->isEmpty()){
+        return view('pages.not_found');
+       }
+       else{
         return view('pages.ticket.buy_ticket_movie')
         ->with('movie',$movie_showtime)
         ->with('movie_showtime_join',$movie_showtime_join)
         ->with('room',$room_showtime)
         ->with('movie_by_id',$movie_by_id)
-        ->with('list_ticket',$list_ticket   )
+        ->with('list_ticket',$list_ticket )
         ->with('movie_popcorndrink',$movie_popcorndrink)
         ->with('seat_room',$seat_room)
         ->with('movie_room_showtime',$movie_room_showtime)
@@ -125,7 +131,9 @@ class HomeController extends Controller
         ->with('uniqueDates',$uniqueDates)
         ->with('movie_room_showtime_seat',$movie_room_showtime_seat);
     }
+    }
     public function movie_detail($movie_id){
+        $movie_by_id = DB::table('tbl_movie') -> where('movie_id',$movie_id)->get();
         $list_movie_soon = DB::table('tbl_movie')-> where('movie_id',$movie_id)->where('movie_status','1')
         ->where('movie_datestart', '>', DB::raw('DATE_ADD(NOW(), INTERVAL 1 DAY)'))
         ->orderBy('movie_datestart', 'desc')
@@ -134,7 +142,11 @@ class HomeController extends Controller
         ->where('movie_datestart', '<', DB::raw('DATE_ADD(NOW(), INTERVAL 1 DAY)'))
         ->orderBy('movie_datestart', 'desc')
         ->get();
+        if($movie_by_id->isEmpty()){
+            return view('pages.not_found');
+           }
+           else{
         return view('pages.movie.movie')->with('list_movie_soon',$list_movie_soon)->with('list_movie_now',$list_movie_now);
+           }
     }
-
 }

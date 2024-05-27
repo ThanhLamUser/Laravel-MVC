@@ -193,18 +193,20 @@ class CheckOutConTroller extends Controller
 
 
     public function ticket(Request $request){
-        $movieid = $request->movie_hidden;
+        $list_movie = Session::get('list_movie');
         $bookingId = Session::get('booking_id');
+        $time_movie = Session::get('time_movie');
+        $screen_movie = Session::get('screen_movie');
+        $seat_single = Session::get('seat_single');
+        $seat_couple = Session::get('seat_couple');
 
-        // Lấy thông tin từ bảng tbl_booking
         $booking = DB::table('tbl_booking')->where('booking_id', $bookingId)->first();
 
-        $movieDetails = DB::table('tbl_movie')->where('movie_id', $movieid)->get();
+        // $movieDetails = DB::table('tbl_movie')->where('movie_id', $movieid)->get();
 
         // Lấy thông tin chi tiết vé từ bảng booking_detail
         $bookingDetails = DB::table('tbl_bookingdetail')->where('booking_id', $bookingId)->get();
 
-        // Lấy thông tin đơn hàng bỏng ngô từ bảng tbl_order
         $orderId = Session::get('order_id');
         $order = DB::table('tbl_order')->where('order_id', $orderId)->first();
 
@@ -216,7 +218,11 @@ class CheckOutConTroller extends Controller
             'bookingDetails' => $bookingDetails,
             'order' => $order,
             'orderDetails' => $orderDetails,
-            'movie' =>$movieDetails
+            'list_movie' =>$list_movie,
+            'time_movie' =>$time_movie,
+            'screen_movie' => $screen_movie,
+            'seat_single' =>$seat_single,
+            'seat_couple' =>$seat_couple
         ]);
     }
 }

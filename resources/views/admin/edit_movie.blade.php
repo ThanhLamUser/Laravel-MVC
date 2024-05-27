@@ -89,30 +89,8 @@
                             <input type="text" name="movie_name" value="{{ $edit_value->movie_name }}"  id="" placeholder="Insert movie name...">
                         </div>
                         <div>
-                            <p>
-                                Genre
-
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                    <title>Ctrl + Click to select multiple genres</title>
-                                    <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/>
-                                </svg>
-                            </p>
-                            <select name="movie_category" id="genre" multiple>
-                                <option value="Action" {{ $edit_value->movie_category == "Action" ? "selected" : "" }}>Action</option>
-                                <option value="Adventure" {{ $edit_value->movie_category == "Adventure" ? "selected" : "" }}>Adventure</option>
-                                <option value="Comedy" {{ $edit_value->movie_category == "Comedy" ? "selected" : "" }}>Comedy</option>
-                                <option value="Drama" {{ $edit_value->movie_category == "Drama" ? "selected" : "" }}>Drama</option>
-                                <option value="Fantasy" {{ $edit_value->movie_category == "Fantasy" ? "selected" : "" }}>Fantasy</option>
-                                <option value="Historical" {{ $edit_value->movie_category == "Historical" ? "selected" : "" }}>Historical</option>
-                                <option value="Horror" {{ $edit_value->movie_category == "Horror" ? "selected" : "" }}>Horror</option>
-                                <option value="Musical" {{ $edit_value->movie_category == "Musical" ? "selected" : "" }}>Musical</option>
-                                <option value="Noir" {{ $edit_value->movie_category == "Noir" ? "selected" : "" }}>Noir</option>
-                                <option value="Romance" {{ $edit_value->movie_category == "Romance" ? "selected" : "" }}>Romance</option>
-                                <option value="Science" {{ $edit_value->movie_category == "Science" ? "selected" : "" }}>Science</option>
-                                <option value="Thriller" {{ $edit_value->movie_category == "Thriller" ? "selected" : "" }}>Thriller</option>
-                                <option value="Western" {{ $edit_value->movie_category == "Western" ? "selected" : "" }}>Western</option>
-                            </select>
-
+                            <p>Genre</p>
+                            <input type="text" name="movie_category"value="{{ $edit_value->movie_category }}" id="" placeholder="Insert category name...">
                         </div>
                     </div>
 
@@ -171,6 +149,12 @@
                         <div>
                             <p>Iframe</p>
                             <input style="width:95%" type="text" value="{{ $edit_value->movie_iframe }}" name="movie_iframe" id="" placeholder="Insert iframe...">
+                        </div>
+                    </div>
+                    <div class="">
+                        <div>
+                            <p>Poster</p>
+                            <input style="width:95%" type="text" name="{{ $edit_value->movie_poster }}" id="" placeholder="Insert poster...">
                         </div>
                     </div>
                     <div class="a">

@@ -6,19 +6,19 @@
                 <h1 class="search-result--header">Search results for: "<span id="id">{{ $keywords }}</span>"</h1>
                 <div class="now-showing--movies">
 
-                    <div class="row sm-gutter">
+                    <div class="row sm-gutter" style="flex:1">
                         @php
                             $count = $search_movie->count();
                         @endphp
 
                         @if ($count == 0)
-                            <h1 class="search-result--no-results">
+                            <h1 class="search-result--no-results" style="">
                                 NO ITEMS MATCH "<span id="id">{{ $keywords }}</span>"!
                                 <p>Try searching for something else or check your spelling.</p>
                             </h1>
                         @elseif ($count == 1)
                             @foreach ($search_movie as $key => $movie_pro)
-                            <div class="col l-12 m-4 c-6" style="width:210px" onclick="transfer('movie/{{ $movie_pro->movie_id }}')">
+                            <div class="col l-2 m-4 c-6" style="width:210px" onclick="transfer('movie/{{ $movie_pro->movie_id }}')">
                                 <div class="now-showing--movies-single">
                                     <img src="{{ URL::to('public/upload/movie/' . $movie_pro->movie_img) }}"
                                         class="now-showing--movies-single-img">
@@ -59,7 +59,7 @@
                             @endforeach
                         @elseif ($count == 2)
                             @foreach ($search_movie as $key => $movie_pro)
-                            <div class="col l-4 m-4 c-6" onclick="transfer('movie/{{ $movie_pro->movie_id }}')">
+                            <div class="col l-2 m-4 c-6" onclick="transfer('movie/{{ $movie_pro->movie_id }}')">
                                 <div class="now-showing--movies-single">
                                     <img src="{{ URL::to('public/upload/movie/' . $movie_pro->movie_img) }}"
                                         class="now-showing--movies-single-img">
@@ -100,7 +100,7 @@
                             @endforeach
                         @elseif ($count == 3)
                             @foreach ($search_movie as $key => $movie_pro)
-                                <div class="col l-3 m-4 c-6" onclick="transfer('movie/{{ $movie_pro->movie_id }}')">
+                                <div class="col l-2 m-4 c-6" onclick="transfer('movie/{{ $movie_pro->movie_id }}')">
                                     <div class="now-showing--movies-single">
                                         <img src="{{ URL::to('public/upload/movie/' . $movie_pro->movie_img) }}"
                                             class="now-showing--movies-single-img">

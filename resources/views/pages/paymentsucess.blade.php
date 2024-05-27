@@ -23,7 +23,9 @@
 
             <div class="movie-ticket-info">
                 <div class="mti-up">
-                    <img src="https://image.tmdb.org/t/p/original/qrkFlypxQ23Ca9iZ1h4uRysIByj.jpg" alt="" class="mti-up--img">
+                    @foreach (@$list_movie as $key => $movie)
+                    <img src="{{ URL::to('public/upload/movie/' . $movie->movie_poster) }}" alt="" class="mti-up--img">
+                    @endforeach
                     <div class="mti-up--container">
                         <div class="mti-up--info">
                             <p id="mti-up--name"></p>
@@ -38,23 +40,27 @@
                             <div class="mti-up--information">
                                 <div class="mti-up--part">
                                     <p>Date</p>
-                                    <p id="mti-up--date"></p>
+                                    @foreach ( $time_movie as $key=> $time)
+                                    <p id="mti-up--date">{{ $time->showtime_date }}</p>
+
                                 </div>
                                 <div class="mti-up--part">
                                     <p>Time</p>
-                                    <p id="mti-up--time"></p>
+                                    <p id="mti-up--time">{{ $time->showtime_timeslot }}</p>
                                 </div>
+                                @endforeach
                                 <div class="mti-up--part">
                                     <p>Seat(s)</p>
                                     <p id="mti-up--seats">
-                                        @foreach ($bookingDetails as $detail)
-                                            {{ $detail->seat_id }}
-                                        @endforeach
+                                        @foreach ($seat_single as $seat){{ $seat->seat_name }} @endforeach
+                                        @foreach ($seat_couple as $seat){{ $seat->seat_name }} @endforeach
                                     </p>
                                 </div>
                                 <div class="mti-up--part">
                                     <p>Screen</p>
-                                    <p id="mti-up--screen"></p>
+                                    @foreach ( $screen_movie  as $key=>$screen)
+                                    <p id="mti-up--screen">{{ $screen->room_name }}</p>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
