@@ -6,7 +6,7 @@
                 <h1 class="search-result--header">Search results for: "<span id="id">{{ $keywords }}</span>"</h1>
                 <div class="now-showing--movies">
 
-                    <div class="row sm-gutter" style="flex:1">
+                    <div class="row " style="flex:1;    justify-content: normal;">
                         @php
                             $count = $search_movie->count();
                         @endphp
