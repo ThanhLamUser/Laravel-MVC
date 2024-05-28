@@ -69,7 +69,9 @@
                 <div class="mti-down">
                     <div class="mti-down--container">
                         <p>Ticket ID</p>
-                        <p>00000{{ $booking->booking_id }}</p>
+                        @foreach ($booking as $key=>$ticket)
+                        <p>{{ $ticket->ticketbooked_id	}}</p>
+                        @endforeach
                         <div>
                             <div class="mti-down--barcode"></div>
                         </div>

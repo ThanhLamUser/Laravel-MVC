@@ -7,9 +7,11 @@
         <div class="poster col l-12 m-12 c-12" style="padding:0">
             <div class="swiper">
                 <div class="swiper-wrapper">
+                    @foreach ($list_movie as $key=>$movie)
+                    @if($movie->movie_poster!=NULL)
                     <div class="swiper-slide">
                         <div>
-                            <img src="{{asset('./public/frontend/images/poster-img.jpg')}}" alt="" class="poster-img">
+                            <img src="{{$movie->movie_poster}}" alt="" class="poster-img">
 
                             <div class="poster-desc">
                                 <img src="https://metadata-static.plex.tv/8/683a142553/8417ea981ccbbe7b3f5026d8c967ae80.png" alt="" class="poster-desc--logo">
@@ -19,62 +21,17 @@
                                         <path onclick="PlayTrailer()" d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c7.6-4.2 16.8-4.1 24.3 .5l144 88c7.1 4.4 11.5 12.1 11.5 20.5s-4.4 16.1-11.5 20.5l-144 88c-7.4 4.5-16.7 4.7-24.3 .5s-12.3-12.2-12.3-20.9V168c0-8.7 4.7-16.7 12.3-20.9z"/>
                                     </svg>
 
-                                    <button class="poster-desc--buy--tickets--button">Buy tickets</button>
+                                    <button class="poster-desc--buy--tickets--button" onclick="transfer('buy-ticket/{{ $movie->movie_id }}')">Buy tickets</button>
                                 </div>
 
                                 <div class="poster-desc--description">
-                                    Lynn, a genius high school student who makes money by helping others cheat tests, receives a new task that leads her to Sydney, Australia. In order to complete the millions-Baht task, Lynn and her classmate have to finish the international STIC (SAT) exam and deliver the answers back to her
-                                    friends in Thailand, before the exam takes place once again in her home country.
+                                   {{$movie->movie_desc  }}
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="swiper-slide">
-                        <div>
-                            <img src="{{asset('./public/frontend/images/poster-img.jpg')}}" alt="" class="poster-img">
-
-                            <div class="poster-desc">
-                                <img src="https://metadata-static.plex.tv/8/683a142553/8417ea981ccbbe7b3f5026d8c967ae80.png" alt="" class="poster-desc--logo">
-
-                                <div class="poster-desc--interactive" onclick="PlayTrailer()">
-                                    <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="poster-desc--play--button">
-                                        <path  d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c7.6-4.2 16.8-4.1 24.3 .5l144 88c7.1 4.4 11.5 12.1 11.5 20.5s-4.4 16.1-11.5 20.5l-144 88c-7.4 4.5-16.7 4.7-24.3 .5s-12.3-12.2-12.3-20.9V168c0-8.7 4.7-16.7 12.3-20.9z"/>
-                                    </svg>
-
-                                    <button class="poster-desc--buy--tickets--button">Buy tickets</button>
-                                </div>
-
-                                <div class="poster-desc--description">
-                                    Lynn, a genius high school student who makes money by helping others cheat tests, receives a new task that leads her to Sydney, Australia. In order to complete the millions-Baht task, Lynn and her classmate have to finish the international STIC (SAT) exam and deliver the answers back to her
-                                    friends in Thailand, before the exam takes place once again in her home country.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div>
-                            <img src="{{asset('./public/frontend/images/poster-img.jpg')}}" alt="" class="poster-img">
-
-                            <div class="poster-desc">
-                                <img src="https://metadata-static.plex.tv/8/683a142553/8417ea981ccbbe7b3f5026d8c967ae80.png" alt="" class="poster-desc--logo">
-
-                                <div class="poster-desc--interactive">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="poster-desc--play--button">
-                                        <path d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zM188.3 147.1c7.6-4.2 16.8-4.1 24.3 .5l144 88c7.1 4.4 11.5 12.1 11.5 20.5s-4.4 16.1-11.5 20.5l-144 88c-7.4 4.5-16.7 4.7-24.3 .5s-12.3-12.2-12.3-20.9V168c0-8.7 4.7-16.7 12.3-20.9z"/>
-                                    </svg>
-
-                                    <button class="poster-desc--buy--tickets--button">Buy tickets</button>
-                                </div>
-
-                                <div class="poster-desc--description">
-                                    Lynn, a genius high school student who makes money by helping others cheat tests, receives a new task that leads her to Sydney, Australia. In order to complete the millions-Baht task, Lynn and her classmate have to finish the international STIC (SAT) exam and deliver the answers back to her
-                                    friends in Thailand, before the exam takes place once again in her home country.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endif
+                    @endforeach
                 </div>
 
                 <div id="swiper-pagination" class="swiper-pagination"></div>
@@ -114,7 +71,7 @@
                                     BUY TICKETS
                                 </button>
 
-                                <button class="now-showing--movies-single-info" class="now-showing--movies-single-buy-tickets--img">
+                                <button class="now-showing--movies-single-info"   onclick="transfer('movie/{{ $movie->movie_id }}')" class="now-showing--movies-single-buy-tickets--img">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                         <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/>
                                     </svg>
@@ -329,7 +286,7 @@
                 </ul>
             </div>
         </div>
-        <iframe class="cup-img" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62701.28801845626!2d106.70303124530955!3d10.82428007374997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317527587e9ad5bf%3A0xafa66f9c8be3c91!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBuZ2jhu4cgVGjDtG5nIHRpbiAtIMSQSFFHIFRQLkhDTQ!5e0!3m2!1svi!2s!4v1714032768154!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        {{-- <iframe class="cup-img" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62701.28801845626!2d106.70303124530955!3d10.82428007374997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317527587e9ad5bf%3A0xafa66f9c8be3c91!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBuZ2jhu4cgVGjDtG5nIHRpbiAtIMSQSFFHIFRQLkhDTQ!5e0!3m2!1svi!2s!4v1714032768154!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> --}}
 
     </div>
 </div>

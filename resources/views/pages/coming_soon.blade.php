@@ -3,13 +3,13 @@
 
 <div class="content">
     <div class="grid wide">
-        <div class="path">
+        {{-- <div class="path">
             <a href="{{ URL::to('/homepage') }}" class="path-home">Home</a>
 
             >
 
             <a href="" class="path-coming-soon">Coming soon</a>
-        </div>
+        </div> --}}
 
         <div class="coming-soon col l-12 m-12 c-12 no-border">
             <h1 class="coming-soon--header  mb-air-1">COMING SOON</h1>

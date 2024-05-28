@@ -170,15 +170,18 @@ class PaymentController extends Controller
                 return redirect()->route('home')->with('error', 'User not found.');
             }
 
-            $orderDetails = "Order ID: " . $request->input('orderId') . ", Amount: " . $request->input('amount'); // Customize as needed
+            $orderDetails = "TICKET ID: " . $request->input('orderId') . ", Amount: " . $request->input('amount'); // Customize as needed
 
             if ($request->input('resultCode') == 0) {
                 // Thanh toán thành công
                 DB::table('tbl_payment')->where('payment_id', $paymentId)->update([
                     'payment_status' => 'Success'
                 ]);
-
                 // Gửi email xác nhận
+                $bookingId = Session::get('booking_id');
+                DB::table('tbl_booking')->where('booking_id', $bookingId)->update([
+                    'ticketbooked_id' => $request->input('orderId')
+                ]);
                 Mail::to($user->user_email)->send(new PaymentSuccess($user, $orderDetails));
 
                 return redirect()->route('ticket')->with('success', 'Payment successful.');

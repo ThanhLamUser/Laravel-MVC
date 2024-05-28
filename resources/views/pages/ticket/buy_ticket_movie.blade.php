@@ -20,7 +20,7 @@
     </div>
 
     <div class="grid wide">
-        <div class="path">
+        {{-- <div class="path">
             <a href="" class="path-home">Home</a>
 
             >
@@ -31,7 +31,7 @@
             @foreach ($movie_by_id as $key => $movie_pro)
                 <a href="" class="path-coming-soon">{{ $movie_pro->movie_name }}</a>
             @endforeach
-        </div>
+        </div> --}}
 
         <div class="movie-info col l-12 m-12 c-12">
             <div class="row2 sm-gutter" style="padding-right: 20px">
@@ -604,12 +604,12 @@
             </div>
         </div>
     </div>
-
+{{--
     <div class="sticky-info" style="display:none">
         <div class="grid wide">
             <div class="sm-gutter">
                 <div class="sticky-info--container">
-                    <div class="sticky-info--movie-info col l-6 m-6 c-6">
+                    <div class="sticky-info--movie-info col l-6 m-6 c-6" style="display:flex">
                         @foreach ($movie_by_id as $key => $movie_pro)
                             <img src="{{ URL::to('public/upload/movie/' . $movie_pro->movie_img) }}" alt=""
                                 class="sticky-info--img">
@@ -617,7 +617,7 @@
                             <div class="sticky-info--movie">
                                 <p>{{ $movie_pro->movie_name }}</p>
                                 <input type="hidden" value="{{ $movie_pro->movie_id }}" name="movie_hidden">
-                        @endforeach
+                                 @endforeach
                         <p id="movie-type">-</p>
                         @foreach ($movie_by_id as $key => $movie_pro)
                             <p id="movie-age">{{ $movie_pro->movie_age }}</p>
@@ -637,7 +637,7 @@
                     </div>
                 </div>
 
-                <div class="sticky-info--payment-info col l-6 m-6 c-6" style="padding-right:0">
+                <div class="sticky-info--payment-info col l-6 m-6 c-6" style="padding-right:0;display:flex">
                     <div class="sticky-info--hold-ticket">
                         <p>Ticket holding time:</p>
                         <p id="countdown-timer">05:00</p>
@@ -657,6 +657,62 @@
 
                             <p>Buy ticket(s)</p>
                         </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+    <div class="sticky-info" style="display:none">
+        <div class="grid wide">
+            <div class="sm-gutter">
+                <div class="sticky-info--container">
+                    <div class="sticky-info--movie-info col l-6 m-6 c-6" style="display:flex">
+                        @foreach ($movie_by_id as $key => $movie_pro)
+                        <img src="{{ URL::to('public/upload/movie/' . $movie_pro->movie_img) }}" alt="" class="sticky-info--img">
+                        <div class="sticky-info--movie">
+                            <p>{{ $movie_pro->movie_name }}</p>
+                            <input type="hidden" value="{{ $movie_pro->movie_id }}" name="movie_hidden">
+                             @endforeach
+                    <p id="movie-type">-</p>
+                    @foreach ($movie_by_id as $key => $movie_pro)
+                        <p id="movie-age">{{ $movie_pro->movie_age }}</p>
+                    @endforeach
+                    <span >Selected Seats: </span>
+                    <span id="movie-seats"></span>
+                    <span id="movie-seats-couple"></span>
+                    <p>
+                        <span id="movie-screen">-</span> |
+                        <span id="movie-time">-</span> |
+                        <span id="movie-date" >-</span>
+                    </p>
+                    <input type="hidden" name="movie_seats" value="">
+                    <input type="hidden" name="movie_seats_couple" value="">
+                    <input type="hidden" name="movie_screen" value="">
+                    <input type="hidden" name="movie_time" value="">
+                </div>
+                    </div>
+
+                    <div class="sticky-info--payment-info col l-6 m-6 c-6" style="display:flex;padding-right:0">
+                        <div class="sticky-info--hold-ticket">
+                            <p>Ticket holding time:</p>
+                            <p id="countdown-timer">05:00</p>
+                        </div>
+
+                        <div class="sticky-info--right">
+                            <div class="sticky-info--temp-bill">
+                                <p>Temporary price calculation</p>
+                                <p>
+                                    <span id="temp-price-calc">0</span>
+                                    <span>đ</span>
+                                </p>
+                                <input type="hidden" name="temp_price_calc" value="">
+                            </div>
+
+                            <button type="submit" class="sticky-info--buy-ticket" onclick="startCountdownCheckOut()">
+
+                                <p>Buy ticket(s)</p>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

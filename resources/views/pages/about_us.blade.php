@@ -15,10 +15,10 @@
 
                 <div class="introducing-the-cinema col l-10 m-4 c-6">
                     <h1>ABOUT US</h1>
-
+                    <div class="cup-map">
                     <img src="https://vietnamteachingjobs.com/wp-content/uploads/2023/11/visiting-the-cinema-in-vietnam-2.jpg"
                         alt="" class="itc-img">
-
+                    </div>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec egestas eleifend libero a efficitur.
                         Curabitur eget ex nisl. Sed cursus augue magna, vel aliquet nisi gravida fringilla. Vestibulum ac

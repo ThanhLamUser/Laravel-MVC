@@ -4,118 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ</title>
-    <link rel="stylesheet" href="{{asset('./public/frontend/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('./public/frontend/css/main.css')}}">
     <link rel="stylesheet" href="{{asset('./public/frontend/css/responsive.css')}}">
     <link rel="stylesheet" href="{{asset('./public/frontend/css/base.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
-    <style>
-        .sticky-info {
-            border-top: 1px solid black;
-            border-bottom: 1px solid black;
-            background-color: #d9d9d9;
-            position: sticky;
-            bottom: 0;
-            top: 0px;
-            z-index: 4;
-        }
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+  	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
-        .sticky-info--container {
-            display: flex;
-            align-items: center;
-        }
-
-        .sticky-info--movie-info {
-            display: flex;
-            align-items: center;
-        }
-
-        .sticky-info--img {
-            width: 100px;
-            height: 150px;
-            user-select: none;
-        }
-
-        .sticky-info--movie {
-            margin-left: 20px;
-        }
-
-        .sticky-info--movie p {
-            font-size: 1.6rem;
-            font-weight: 500;
-        }
-
-        .sticky-info--payment-info {
-            display: flex;
-        }
-
-        .sticky-info--hold-ticket {
-            width: 160px;
-            height: 80px;
-            background-color: #e3b1b1;
-            margin-right: 20px;
-            border: 1px solid #e3b1b1;
-            border-radius: 10px;
-        }
-
-        .sticky-info--hold-ticket p:first-child {
-            font-size: 1.4rem;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-
-        .sticky-info--hold-ticket p:last-child {
-            font-size: 4rem;
-            font-weight: 500;
-            margin-top: 0;
-            margin-bottom: 20px;
-        }
-
-        .sticky-info--hold-ticket, .sticky-info--buy-ticket {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        .sticky-info--temp-bill, .sticky-info--buy-ticket {
-            width: 300px;
-            height: 35px;
-            background-color: #bfb2b2;
-            border: 1px solid #bfb2b2;
-            border-radius: 10px;
-        }
-
-        .sticky-info--temp-bill {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-
-        .sticky-info--temp-bill p, .sticky-info--buy-ticket p{
-            font-size: 1.4rem;
-            font-weight: 500;
-            margin: 0;
-        }
-
-        .sticky-info--buy-ticket {
-            width: 300px;
-            height: 35px;
-            background-color: #dbb6b6;
-            border: 1px solid #dbb6b6;
-            border-radius: 10px;
-        }
-
-        .sticky-info--buy-ticket:hover {
-            cursor: pointer;
-            filter: brightness(1.1);
-        }
-
-        .sticky-info--buy-ticket:active {
-            transform: translateY(1px);
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -124,8 +21,7 @@
             <div class="row sm-gutter">
               <!-- <div class="col l-12 m-4 c-6">  -->
               <div class="header-logo" onclick="transfer('/laravel/example-app/homepage')">
-                <img src="{{asset('./public/frontend/images/cinova-logo.png')}}" alt="">
-                <img src="{{asset('./public/frontend/images/cinova.png')}}" alt="">
+                <img src="{{asset('./public/frontend/images/logocinova.png')}}" alt="">
               </div>
 
               <div class="header-menu">
@@ -226,14 +122,14 @@
                 <div class="row1 sm-gutter">
                     <div class="footer-logo">
                         <div class="col l-2-4 m-4 c-6">
-                            <img src="{{asset('./public/frontend/images/cinova-logo.png')}}" alt="" onclick="transfer('/laravel/example-app/homepage')" class="footer-img"/>
+                            <img src="{{asset('./public/frontend/images/logocinova.png')}}" alt="" onclick="transfer('/laravel/example-app/homepage')" class="footer-img"/>
                         </div>
                     </div>
 
                     <div class="footer-content-1">
                         <div class="col l-3 m-4 c-6">
                             <div class="footer-content-1--block">
-                                    <h3 class="footer-content-1--heading">BRAND VIETNAM</h3>
+                                    <h3 class="footer-content-1--heading">ABOUT CINEMA</h3>
                                     <ul class="footer-content-1--ulist">
                                         <li class="footer-content-1--list">
                                             <a href="{{URL::to('/about-us')}}" class="footer-content-1--option" >About us</a>
@@ -304,7 +200,7 @@
         </div>
     </footer>
 
-    <div class="footer-separator">
+    {{-- <div class="footer-separator">
         <div class="grid wide">
             <div class="col l-12 m-12 c-12">
                 <div class="row sm-gutter">
@@ -312,7 +208,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <footer class="footer-2">
         <div class="grid wide">
@@ -323,7 +219,7 @@
                                 <path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM199.4 312.6c-31.2-31.2-31.2-81.9 0-113.1s81.9-31.2 113.1 0c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9c-50-50-131-50-181 0s-50 131 0 181s131 50 181 0c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0c-31.2 31.2-81.9 31.2-113.1 0z"/>
                             </svg>
 
-                            2024 Brand-name. All rights reserved.
+                            2024 Credit 2024 Cinova. All rights reserved.
                         </div>
 
                         <div class="footer-content-2--footnote">
@@ -337,8 +233,7 @@
             </div>
         </div>
     </footer>
-    <div id="login_register_form">
-    </div>
+
 
     <script src="{{asset('./public/frontend/js/script.js')}}"></script>
     <script src="https://www.youtube.com/iframe_api"></script>

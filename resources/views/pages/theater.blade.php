@@ -5,13 +5,13 @@
     <div class="grid wide">
         <div class="col c-12">
             <div class="container">
-                <div class="path">
+                {{-- <div class="path">
                     <a href="{{ URL::to('/homepage') }}" class="path-home">Home</a>
 
                     >
 
                     <a href="" class="path-theaters">Theaters</a>
-                </div>
+                </div> --}}
 
                 <div class="theater_schedule">
                     <div class="theater_name">
@@ -35,7 +35,7 @@
                                     <button class="red_button" onclick="transfer('contact-us')">Contact</button>
                                 </div>
                             </div>
-                            <div class="schedule_time">
+                            {{-- <div class="schedule_time">
                                 <button class="schedule_captions schedule_time-btn">
                                     Lịch chiếu
                                 </button>
@@ -98,11 +98,11 @@
                                 <div class="movie-info--slider schedule_calendar-slider">
                                     <input type="range" min="0" max="700" value="1" class="slider" id="myRange">
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
 
                     </div>
-                    <div class="theater_schedule-movie">
+                    {{-- <div class="theater_schedule-movie">
                         <div class="card">
                             <img src="https://m.media-amazon.com/images/I/71YnCMFqPVL._SL1500_.jpg" class="img_movie" alt="">
                             <div class="card__content">
@@ -405,7 +405,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="line line_movie"></div>
+                    <div class="line line_movie"></div> --}}
                 </div>
 
             </div>

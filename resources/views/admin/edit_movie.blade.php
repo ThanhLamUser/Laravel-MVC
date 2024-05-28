@@ -1,63 +1,5 @@
 @extends('admin_layout')
 @section('admin_content')
-{{--
-<div class="row">
-    <div class="col-lg-12">
-            <section class="panel">
-                <header class="panel-heading">
-                    cập nhật phim
-                </header>
-                <div class="panel-body">
-                    @foreach ($edit_movie as $key => $edit_value)
-
-                    <div class="position-center">
-                        <form role="form" action="{{ URL::to('/update-movie/'.$edit_value->movie_id)}}" method="post">
-                            {{ csrf_field() }}
-                        <div class="form-group">
-                            <label for="movie_name">Tên Phim</label>
-                            <input type="text" value="{{ $edit_value->movie_name }}" class="form-control" id="movie_name" name="movie_name" placeholder="Tên Phim">
-                        </div>
-                        <div class="form-group">
-                            <label for="movie_img">Hình ảnh của phim</label>
-                            <input type="file" value="{{ $edit_value->movie_img }}" class="form-control" id="movie_img" name="movie_img" placeholder="Hình ảnh của phim">
-                        </div>
-                        <div class="form-group">
-                            <label for="movie_category">Thể loại</label>
-                            <input type="text" value="{{ $edit_value->movie_category }}" class="form-control" id="movie_category" name="movie_category" placeholder="Thể loại">
-                        </div>
-                        <div class="form-group">
-                            <label for="movie_time">Thời lượng</label>
-                            <input type="text"class="form-control" value="{{ $edit_value->movie_time }}" id="movie_time" name="movie_time" placeholder="Thời lượng (phút)">
-                        </div>
-                        <div class="form-group">
-                            <label for="movie_datestart">Ngày khởi chiếu</label>
-                            <input type="date"class="form-control" value="{{ $edit_value->movie_datestart }}" id="movie_datestart" name="movie_datestart" placeholder="Ngày khởi chiếu">
-                        </div>
-                        <div class="form-group">
-                            <label for="movie_age">Độ tuổi</label>
-                            <input type="text"class="form-control" value="{{ $edit_value->movie_age }}" id="movie_age" name="movie_age" placeholder="Độ tuổi">
-                        </div>
-                        <div class="form-group">
-                            <label for="movie_direct">Đạo diễn </label>
-                            <input type="text"class="form-control" value="{{ $edit_value->movie_direct }}" id="movie_direct" name="movie_direct" placeholder="Đạo diễn">
-                        </div>
-                        <div class="form-group">
-                            <label for="movie_actor">Diễn viên</label>
-                            <input type="text"class="form-control" value="{{ $edit_value->movie_actor }}" id="movie_actor" name="movie_actor" placeholder="Diễn Viên">
-                        </div>
-                        <div class="form-group">
-                            <label for="movie_desc">Mô tả</label>
-                            <textarea type="text" style="resize" rows="6" class="form-control" id="movie_desc" name="movie_desc" placeholder="Mô tả của phim">{{ $edit_value->movie_desc }}</textarea>
-                        </div>
-
-                        <button type="submit" name="edit-movie" class="btn btn-info">Cập nhật</button>
-                    </form>
-                    </div>
-                    @endforeach
-                </div>
-            </section>
-    </div>
-</div> --}}
 
 <div class="adm__add-movie col l-9 m-4 c-6">
     <h1>EDIT MOVIES</h1>
@@ -154,7 +96,7 @@
                     <div class="">
                         <div>
                             <p>Poster</p>
-                            <input style="width:95%" type="text" name="{{ $edit_value->movie_poster }}" id="" placeholder="Insert poster...">
+                            <input style="width:95%" type="text" value="{{ $edit_value->movie_poster }}"name="movie_poster" id="" placeholder="Insert poster...">
                         </div>
                     </div>
                     <div class="a">

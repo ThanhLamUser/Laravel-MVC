@@ -200,7 +200,7 @@ class CheckOutConTroller extends Controller
         $seat_single = Session::get('seat_single');
         $seat_couple = Session::get('seat_couple');
 
-        $booking = DB::table('tbl_booking')->where('booking_id', $bookingId)->first();
+        $booking = DB::table('tbl_booking')->where('booking_id', $bookingId)->get();
         // $movieDetails = DB::table('tbl_movie')->where('movie_id', $movieid)->get();
         $payment_status = DB::table('tbl_payment')->where('booking_id', $bookingId)->where('payment_status', 'Success')->get();
 

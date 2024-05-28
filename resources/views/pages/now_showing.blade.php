@@ -4,13 +4,13 @@
 
 <div class="content">
     <div class="grid wide">
-        <div class="path">
+        {{-- <div class="path">
             <a href="{{ URL::to('/homepage') }}" class="path-home">Home</a>
 
             >
 
             <a href="" class="path-now-showing">Now showing</a>
-        </div>
+        </div> --}}
 
         <div class="now-showing col l-12 m-12 c-12">
             <h1 class="now-showing--header mb-air-1" >NOW SHOWING</h1>
