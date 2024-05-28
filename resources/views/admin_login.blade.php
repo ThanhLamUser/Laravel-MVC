@@ -36,17 +36,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             echo $message;
             $message = Session::get('message',null);
         }
+         Session::forget('message')
     ?>
 		<form action="{{ URL::to('./admin-dashboard') }}" method="post">
             {{ csrf_field() }}
 			<input type="email" class="ggg" name="admin_email" placeholder="E-MAIL" required="">
 			<input type="password" class="ggg" name="admin_password" placeholder="PASSWORD" required="">
-			<span><input type="checkbox" />Remember Me</span>
-			<h6><a href="#">Forgot Password?</a></h6>
+			{{-- <span><input type="checkbox" />Remember Me</span> --}}
+			{{-- <h6><a href="#">Forgot Password?</a></h6> --}}
 				<div class="clearfix"></div>
 				<input type="submit" value="Sign In" name="login">
 		</form>
-		<p>Don't Have an Account ?<a href="registration.html">Create an account</a></p>
+		{{-- <p>Don't Have an Account ?<a href="registration.html">Create an account</a></p> --}}
 </div>
 </div>
 <script src="{{asset('./public/backend/js/bootstrap.js')}}"></script>

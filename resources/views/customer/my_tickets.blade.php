@@ -15,39 +15,43 @@
 
           <div class="transaction-history col l-10 m-4 c-6">
             <h1>TRANSACTION HISTORY</h1>
-
-            <div class="th-ticket">
+            @foreach ($list_payment as $key=>$list)
+            @if($list->showtime_date > now())
+            <div class="th-ticket ">
+            @else
+            <div class="th-ticket th-ticket--used">
+            @endif
               <div class="th-ticket-left">
                 <span id="th-ticket-left-namescreen">
-                  <span id="th-ticket-left-name">TAYLOR SWIFT | THE ERAS TOUR</span>
-                  <span id="th-ticket-left-screen">SCREEN 02</span>
+                  <span id="th-ticket-left-name">{{ $list->movie_name }}</span>
+                  <span id="th-ticket-left-screen">{{ $list->room_name  }}</span>
                 </span>
                 <span id="th-ticket-left-barcode">
                   <div class="th-ticket-left-barcode"></div>
-                  <span id="th-ticket-left-barcode-num">1234567890</span>
+                  <span id="th-ticket-left-barcode-num">{{ $list->ticketbooked_id }}</span>
                 </span>
               </div>
               <div class="th-ticket-right">
-                <img src="https://image.tmdb.org/t/p/original/mowTk9LFSr8rW3EG2CUSwzuvx0g.jpg" alt="" id="th-ticket-right-img">
+                <img src="{{ $list->movie_poster }}" alt="" id="th-ticket-right-img">
                 <div class="th-ticket-right-info">
-                  <div class="th-ticket-right-row">
-                    <p>ROW</p>
-                    <p>G</p>
-                  </div>
                   <div class="th-ticket-right-seat">
                     <p>SEAT</p>
-                    <p>1, 2</p>
+                    <p>@foreach ($list_seat as $key=>$seat)
+                        @if($seat->ticketbooked_id==$list->ticketbooked_id)
+                        {{ $seat  ->seat_name}}
+                        @endif
+                    @endforeach</p>
                   </div>
                   <div class="th-ticket-right-date">
                     <p>DATE</p>
-                    <p>10 Feb</p>
+                    <p>{{ $list->showtime_date }}</p>
                   </div>
                   <div class="th-ticket-right-time">
                     <p>TIME</p>
-                    <p>15:20</p>
+                    <p>{{ $list->showtime_timeslot }}</p>
                   </div>
                 </div>
-              </div>
+            </div>
 
               <div class="used-ticket">
                   <div class="used-ticket2">
@@ -59,7 +63,8 @@
                   </div>
               </div>
             </div>
-            <div class="th-ticket">
+            @endforeach
+            {{-- <div class="th-ticket">
               <div class="th-ticket-left">
                 <span id="th-ticket-left-namescreen">
                   <span id="th-ticket-left-name">BARBIE</span>
@@ -72,135 +77,6 @@
               </div>
               <div class="th-ticket-right">
                 <img src="https://image.tmdb.org/t/p/original/llZSAx6YW0y9tV4iMKmbUBNh70I.jpg" alt="" id="th-ticket-right-img">
-                <div class="th-ticket-right-info">
-                  <div class="th-ticket-right-row">
-                    <p>ROW</p>
-                    <p>G</p>
-                  </div>
-                  <div class="th-ticket-right-seat">
-                    <p>SEAT</p>
-                    <p>1, 2</p>
-                  </div>
-                  <div class="th-ticket-right-date">
-                    <p>DATE</p>
-                    <p>10 Feb</p>
-                  </div>
-                  <div class="th-ticket-right-time">
-                    <p>TIME</p>
-                    <p>15:20</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="used-ticket">
-                  <div class="used-ticket2">
-                    <div class="used-ticket3">
-                      <div class="used-ticket4">
-                          <p>USED TICKET</p>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-            </div>
-            <div class="th-ticket th-ticket--used">
-              <div class="th-ticket-left">
-                <span id="th-ticket-left-namescreen">
-                  <span id="th-ticket-left-name">OPPENHEIMER</span>
-                  <span id="th-ticket-left-screen">SCREEN 04</span>
-                </span>
-                <span id="th-ticket-left-barcode">
-                  <div class="th-ticket-left-barcode"></div>
-                  <span id="th-ticket-left-barcode-num">1234567890</span>
-                </span>
-              </div>
-              <div class="th-ticket-right">
-                <img src="https://image.tmdb.org/t/p/original/brPg958V6r6mdtXlrVNIWHRcWQz.jpg" alt="" id="th-ticket-right-img">
-                <div class="th-ticket-right-info">
-                  <div class="th-ticket-right-row">
-                    <p>ROW</p>
-                    <p>G</p>
-                  </div>
-                  <div class="th-ticket-right-seat">
-                    <p>SEAT</p>
-                    <p>1, 2</p>
-                  </div>
-                  <div class="th-ticket-right-date">
-                    <p>DATE</p>
-                    <p>10 Feb</p>
-                  </div>
-                  <div class="th-ticket-right-time">
-                    <p>TIME</p>
-                    <p>15:20</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="used-ticket">
-                  <div class="used-ticket2">
-                    <div class="used-ticket3">
-                      <div class="used-ticket4">
-                          <p>USED TICKET</p>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-            </div>
-            <div class="th-ticket th-ticket--used">
-              <div class="th-ticket-left">
-                <span id="th-ticket-left-namescreen">
-                  <span id="th-ticket-left-name">THE MENU</span>
-                  <span id="th-ticket-left-screen">SCREEN 01</span>
-                </span>
-                <span id="th-ticket-left-barcode">
-                  <div class="th-ticket-left-barcode"></div>
-                  <span id="th-ticket-left-barcode-num">1234567890</span>
-                </span>
-              </div>
-              <div class="th-ticket-right">
-                <img src="https://image.tmdb.org/t/p/original/n8kEEnWAomUfL5vTvDyQpdUaMFF.jpg" alt="" id="th-ticket-right-img">
-                <div class="th-ticket-right-info">
-                  <div class="th-ticket-right-row">
-                    <p>ROW</p>
-                    <p>G</p>
-                  </div>
-                  <div class="th-ticket-right-seat">
-                    <p>SEAT</p>
-                    <p>1, 2</p>
-                  </div>
-                  <div class="th-ticket-right-date">
-                    <p>DATE</p>
-                    <p>10 Feb</p>
-                  </div>
-                  <div class="th-ticket-right-time">
-                    <p>TIME</p>
-                    <p>15:20</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="used-ticket">
-                  <div class="used-ticket2">
-                    <div class="used-ticket3">
-                      <div class="used-ticket4">
-                          <p>USED TICKET</p>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-            </div>
-            <div class="th-ticket th-ticket--used">
-              <div class="th-ticket-left">
-                <span id="th-ticket-left-namescreen">
-                  <span id="th-ticket-left-name">SONG OF THE SOUTH</span>
-                  <span id="th-ticket-left-screen">SCREEN 01</span>
-                </span>
-                <span id="th-ticket-left-barcode">
-                  <div class="th-ticket-left-barcode"></div>
-                  <span id="th-ticket-left-barcode-num">1234567890</span>
-                </span>
-              </div>
-              <div class="th-ticket-right">
-                <img src="https://image.tmdb.org/t/p/original/wysrMWOVdVHvewD1zDLRULcFKBA.jpg" alt="" id="th-ticket-right-img">
                 <div class="th-ticket-right-info">
                   <div class="th-ticket-right-row">
                     <p>ROW</p>
@@ -273,8 +149,7 @@
                     </div>
                   </div>
               </div>
-            </div>
-
+            </div> --}}
       </div>
         </div>
     </div>

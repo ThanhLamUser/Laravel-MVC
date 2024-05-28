@@ -68,6 +68,9 @@ class HomeController extends Controller
         return view('pages.login');
         }
     }
+    public function register(){
+        return view('pages.register');
+    }
     public function search(Request $request){
         $keywords = $request -> keywords_submit;
 

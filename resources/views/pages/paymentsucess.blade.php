@@ -24,7 +24,7 @@
             <div class="movie-ticket-info">
                 <div class="mti-up">
                     @foreach ($list_movie as $key => $movie)
-                    <img src="{{ URL::to('public/upload/movie/' . $movie->movie_poster) }}" alt="" class="mti-up--img">
+                    <img src="{{ $movie->movie_poster }}" alt="" class="mti-up--img">
                     @endforeach
                     <div class="mti-up--container">
                         <div class="mti-up--info">

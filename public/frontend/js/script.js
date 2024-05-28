@@ -495,3 +495,88 @@ function transfer_root(path) {
     }
 }
 
+{
+    function validateEmailLogin() {
+        var email = document.getElementById('email').value;
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var emailError = document.getElementById('emailError');
+
+        if (!emailPattern.test(email)) {
+            emailError.style.display = 'inline';
+        } else {
+            emailError.style.display = 'none';
+        }
+    }
+    function validatePasswordLogin() {
+        var password = document.getElementById('Password').value;
+        var passwordError = document.getElementById('passwordError');
+
+        if (password === "") {
+            passwordError.style.display = 'inline';
+        } else {
+            passwordError.style.display = 'none';
+        }
+    }
+    function validateFullName() {
+        var name = document.getElementById('user_name').value;
+        var nameError = document.getElementById('nameError');
+
+        if (name === "") {
+            nameError.style.display = 'inline';
+            return false;
+        } else {
+            nameError.style.display = 'none';
+            return true;
+        }
+    }
+
+    function validatePhone() {
+        var phone = document.getElementById('user_phone').value;
+        var phonePattern = /^[0-9]{10,11}$/;
+        var phoneError = document.getElementById('phoneError');
+
+        if (!phonePattern.test(phone)) {
+            phoneError.style.display = 'inline';
+            return false;
+        } else {
+            phoneError.style.display = 'none';
+            return true;
+        }
+    }
+
+    function validateEmail() {
+        var email = document.getElementById('user_email').value;
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var emailError = document.getElementById('emailError');
+
+        if (!emailPattern.test(email)) {
+            emailError.style.display = 'inline';
+            return false;
+        } else {
+            emailError.style.display = 'none';
+            return true;
+        }
+    }
+
+    function validatePassword() {
+        var password = document.getElementById('user_password').value;
+        var passwordError = document.getElementById('passwordError');
+
+        if (password === "") {
+            passwordError.style.display = 'inline';
+            return false;
+        } else {
+            passwordError.style.display = 'none';
+            return true;
+        }
+    }
+
+    function validateForm() {
+        var validName = validateFullName();
+        var validPhone = validatePhone();
+        var validEmail = validateEmail();
+        var validPassword = validatePassword();
+
+        return validName && validPhone && validEmail && validPassword;
+    }
+}

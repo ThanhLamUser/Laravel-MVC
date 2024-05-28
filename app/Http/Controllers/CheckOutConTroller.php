@@ -76,6 +76,7 @@ class CheckOutConTroller extends Controller
         $data['user_id'] = Session::get('user_id') ?: null;
         $data['booking_status'] = "Pending processing";
         $data['booking_total'] = $total_booking_price;
+        $data['booking_date'] = now();
         $list_booking = DB::table('tbl_booking')->insertGetId($data);
         $list_user = DB::table('tbl_user')->get();
 

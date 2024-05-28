@@ -10,75 +10,31 @@
                 <th>Username</th>
                 <th>Total Price</th>
                 <th>Date</th>
+                <th>Method</th>
                 <th>Status</th>
                 <th>Details</th>
             </tr>
-
+            @foreach ($list_payment as $key=>$payment)
             <tr>
-                <th>647</th>
-                <th>Vân Khánh</th>
-                <th>647.000đ</th>
-                <th>29/03/2024</th>
+                <th>{{ $payment->booking_id }}</th>
+                <th>{{ $payment->user_name }}</th>
+                <th>{{ $payment->payment_total }}</th>
+                <th>{{ $payment->booking_date }}</th>
+                @if ($payment->payment_method =='domestic_card')
+                <th >DOMESTIC CARD</th>
+                @else
+                <th style="color: palevioletred" >MOMO</th>
+                @endif
+                @if($payment->payment_status=='Success')
                 <th class="completed">COMPLETED</th>
-                <th>
-                    <button id="adm__bookings--details--btn">VIEW DETAILS</button>
-                </th>
-            </tr>
-
-            <tr>
-                <th>652</th>
-                <th>Hoàng Khánh</th>
-                <th>652.000đ</th>
-                <th>10/09/2024</th>
+                @else
                 <th class="incomplete">INCOMPLETE</th>
+                @endif
                 <th>
-                    <button id="adm__bookings--details--btn">VIEW DETAILS</button>
+                    {{ $payment->ticketbooked_id }}
                 </th>
             </tr>
-
-            <tr>
-                <th>647</th>
-                <th>Vân Khánh</th>
-                <th>647.000đ</th>
-                <th>29/03/2024</th>
-                <th class="completed">COMPLETED</th>
-                <th>
-                    <button id="adm__bookings--details--btn">VIEW DETAILS</button>
-                </th>
-            </tr>
-
-            <tr>
-                <th>652</th>
-                <th>Hoàng Khánh</th>
-                <th>652.000đ</th>
-                <th>10/09/2024</th>
-                <th class="incomplete">INCOMPLETE</th>
-                <th>
-                    <button id="adm__bookings--details--btn">VIEW DETAILS</button>
-                </th>
-            </tr>
-
-            <tr>
-                <th>647</th>
-                <th>Vân Khánh</th>
-                <th>647.000đ</th>
-                <th>29/03/2024</th>
-                <th class="completed">COMPLETED</th>
-                <th>
-                    <button id="adm__bookings--details--btn">VIEW DETAILS</button>
-                </th>
-            </tr>
-
-            <tr>
-                <th>652</th>
-                <th>Hoàng Khánh</th>
-                <th>652.000đ</th>
-                <th>10/09/2024</th>
-                <th class="incomplete">INCOMPLETE</th>
-                <th>
-                    <button id="adm__bookings--details--btn">VIEW DETAILS</button>
-                </th>
-            </tr>
+            @endforeach
         </table>
 
         <div class="adm__bookings--pagination">

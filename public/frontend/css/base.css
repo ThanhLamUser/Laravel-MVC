@@ -89,7 +89,7 @@ html{
 
 
   .red_button {
-    background-color: #ba2623; /* màu nền đỏ */
+    background-color: #d62222; /* màu nền đỏ */
     color: black; /* màu chữ trắng */
     width: 120px; /* độ rộng 50px */
     height: 30px; /* chiều cao tầm 20px */
@@ -119,3 +119,8 @@ input {
     box-shadow: 0px 4px 10px grey;
     outline: unset;
 }
+.error-message {
+    color: red;
+    display: none;
+}
+

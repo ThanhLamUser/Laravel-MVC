@@ -48,7 +48,7 @@ class UserController extends Controller
             return Redirect::to('./homepage');
 
         }else{
-            Session::put('message','Mật khẩu hoặc tài khoản bị sai vui lòng nhập lại !');
+            Session::put('message_user','Password or account is incorrect, please re-enter!');
             return Redirect::to('./login');
         }
     }
@@ -62,6 +62,17 @@ class UserController extends Controller
         $this ->AuthLogin();
         $user_id = Session::get('user_id');
         $user = DB::table('tbl_user')->where('user_id',$user_id)->get();
-        return view('customer.my_tickets')->with('user',$user);
+        $list_seat = DB::table('tbl_bookingdetail')
+        ->join('tbl_booking','tbl_booking.booking_id','=','tbl_bookingdetail.booking_id')
+        ->join('tbl_seat','tbl_seat.seat_id','=','tbl_bookingdetail.seat_id')->get();
+
+        $list_payment = DB::table('tbl_payment')
+        ->join('tbl_booking','tbl_booking.booking_id','=','tbl_payment.booking_id')
+        ->join('tbl_showtime','tbl_showtime.showtime_id','=','tbl_booking.showtime_id')
+        ->join('tbl_room','tbl_room.room_id','=','tbl_showtime.room_id')
+        ->join('tbl_movie','tbl_booking.movie_id','=','tbl_movie.movie_id')
+        ->join('tbl_user','tbl_user.user_id','=','tbl_booking.user_id')->whereNotNull('ticketbooked_id')->where('tbl_user.user_id',$user_id)
+        ->where('payment_status','Success')->orderby('tbl_booking.booking_date','desc')->orderby('tbl_booking.booking_id','desc')->get();
+        return view('customer.my_tickets')->with('user',$user)->with('list_payment', $list_payment)->with('list_seat', $list_seat);
     }
 }

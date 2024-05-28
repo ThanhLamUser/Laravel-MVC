@@ -16,7 +16,7 @@
                 <div class="theater_schedule">
                     <div class="theater_name">
                         <img src="../img/Screenshot 2024-04-14 171059.png" alt="">
-                        <h1>CINOVA CINEMA</h1>
+                        <h1 style="color:#d62222">CINOVA CINEMA</h1>
                         <img src="../img/Screenshot 2024-04-14 171059.png" alt="">
                     </div>
                     <div class="schedule">

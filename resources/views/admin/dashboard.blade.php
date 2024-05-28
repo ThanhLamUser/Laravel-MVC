@@ -10,15 +10,14 @@
                 <div class="a"></div>
                 <div>
                     <p>Movies Added</p>
-                    <p id="">0</p>
+                    <p id="">{{ $list_movie_count }}</p>
                 </div>
             </div>
-
             <div class="adm__dashboard-up--stat">
                 <div class="a"></div>
                 <div>
                     <p>Customer Count</p>
-                    <p id="">0</p>
+                    <p id="">{{ $list_user_count }}</p>
                 </div>
             </div>
 
@@ -26,7 +25,7 @@
                 <div class="a"></div>
                 <div>
                     <p>Revenue</p>
-                    <p id="">0</p>
+                    <p id="">{{number_format( $total_payment , 0, ',', '.') }}</p>
                 </div>
             </div>
         </div>
@@ -45,25 +44,26 @@
                     <th>E-mail</th>
                     <th></th>
                 </tr>
-
+                @foreach ($list_user as $key=>$user)
                 <tr>
                     <th>
-                        <p id="">Hoàng Khánh</p>
+                        <p id="">{{ $user->user_name }}</p>
                     </th>
                     <th>
-                        <p id="">109</p>
+                        <p id="">{{ $user->user_id }}</p>
                     </th>
                     <th>
-                        <p id="">0922520652</p>
+                        <p id="">{{ $user->user_phone}}</p>
                     </th>
                     <th>
-                        <p id="">22520652@gm.uit.edu.vn</p>
+                        <p id="">{{ $user->user_email }}</p>
                     </th>
-                    <th>...</th>
+                    <th></th>
+                @endforeach
 
                 </tr>
 
-                <tr>
+                {{-- <tr>
                     <th>
                         <p id="">Vân Khánh</p>
                     </th>
@@ -78,75 +78,8 @@
                     </th>
                     <th>...</th>
 
-                </tr>
+                </tr> --}}
 
-                <tr>
-                    <th>
-                        <p id="">Khánh Linh</p>
-                    </th>
-                    <th>
-                        <p id="">111</p>
-                    </th>
-                    <th>
-                        <p id="">0922520770</p>
-                    </th>
-                    <th>
-                        <p id="">22520770@gm.uit.edu.vn</p>
-                    </th>
-                    <th>...</th>
-
-                </tr>
-
-                <tr>
-                    <th>
-                        <p id="">Tuấn Kiệt</p>
-                    </th>
-                    <th>
-                        <p id="">112</p>
-                    </th>
-                    <th>
-                        <p id="">0922520726</p>
-                    </th>
-                    <th>
-                        <p id="">22520726@gm.uit.edu.vn</p>
-                    </th>
-                    <th>...</th>
-
-                </tr>
-
-                <tr>
-                    <th>
-                        <p id="">Nguyễn Thanh Lâm</p>
-                    </th>
-                    <th>
-                        <p id="">113</p>
-                    </th>
-                    <th>
-                        <p id="">0922520648</p>
-                    </th>
-                    <th>
-                        <p id="">22520648@gm.uit.edu.vn</p>
-                    </th>
-                    <th>...</th>
-
-                </tr>
-
-                <tr>
-                    <th>
-                        <p id="">Kỳ Lâm</p>
-                    </th>
-                    <th>
-                        <p id="">114</p>
-                    </th>
-                    <th>
-                        <p id="">0922520749</p>
-                    </th>
-                    <th>
-                        <p id="">22520749@gm.uit.edu.vn</p>
-                    </th>
-                    <th>...</th>
-
-                </tr>
             </table>
 
             <div class="adm__dashboard-down--pagination">
