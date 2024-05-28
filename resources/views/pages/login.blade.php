@@ -6,7 +6,7 @@
                 <div class="cd-path">
                 </div>
 
-                <div class="cd-container" style="background-color: #f7f7f7; justify-content:center">
+                <div class="cd-container" style="background-color: #f7f1dc; justify-content:center">
                     <div class="account">
                         <div class="account_container">
                             <h1 class="account_container-header">Login into your account</h1>

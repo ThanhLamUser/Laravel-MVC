@@ -90,6 +90,7 @@
         // Thêm class "movie-info--hours-option-focus" vào thẻ li được nhấp
         element.classList.add('movie-info--hours-option-focus');
     }
+
     function toggleMIH(fieldId) {
         document.getElementById('movie-info--hours-1').classList.add('movie-info--hours-show');
         var hourLists = document.querySelectorAll('.movie-info--hours-list');
@@ -127,10 +128,9 @@
             choose_seat.style.display = 'none'
             popcorn.style.display = 'none'
             movie.classList.remove('movie-info--hours-option-focus');
+
         }
-        else {
-            element.style.display = 'block';
-        }
+        var hourElements = document.querySelectorAll('.movie-info--hours.movie-info--hours-show');
     }
     function toggleClick() {
         var stickyInfo = document.querySelector('.sticky-info');

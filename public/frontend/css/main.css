@@ -1491,6 +1491,36 @@ html {
     transition: 0.2s ease;
     border-radius: 6px;
   }
+  .NO-schedules{
+    margin-top: 80px;
+    text-align: center;
+    font-size: 3.2rem;
+    font-family: auto;
+    width: 800px;
+    /* margin-bottom: 80px; */
+    font-weight: 500;
+    background-color: #f7f1dc;
+    border: unset;
+    padding: 4px 36px;
+    margin-right: 40px;
+    transition: color 0.2s ease;
+    transition: 0.2s ease;
+}
+
+.NO-schedules:hover{
+    transform: unset;
+    cursor: default;
+    filter: unset;
+    background-color: #f7f1dc;
+
+}
+
+.NO-schedules:active{
+
+    transform: unset;
+    background-color: #f7f1dc;
+    color: black;
+}
 
   .movie-info--hours-option:hover {
     transform: translateY(1px);
@@ -4571,4 +4601,180 @@ html {
     margin-top: 30px;
     margin-left: 135px;
 
+}
+
+
+
+/* LOGIN REGISTER */
+
+.login{
+    width: 600px;
+    height: 400px;
+    display: flex;
+    background-color: var(--secondary-color);
+}
+
+
+.account{
+    background: #f7f1dc;;
+    border: 1px solid #f7f1dc;;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    width: 480px;
+}
+
+.account_container-header{
+    font-size: 2.8rem;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    color: #d62222;
+}
+.account_container-form {
+    margin-left: 36px;
+    margin-right: 36px;
+    position: relative;
+}
+
+.account_text{
+    text-align: center;
+    font-weight: 600;
+}
+
+.account_container-form--group-login{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 12px;
+}
+
+
+.img_email{
+    width: 16px;
+    position: absolute;
+    right: 15px;
+    top: 25px;
+}
+
+.img_lock{
+    width: 16px;
+    position: absolute;
+    right: 15px;
+    top: 88px;
+}
+
+.button_container{
+    text-align: center;
+}
+
+.btn{
+    width: 300px;
+    height: 32px;
+    cursor:pointer;
+    border: 1px solid var(--white-color);
+    border-radius: 16px;
+    font-weight: 700;
+    margin-top: 6px;
+    border: 1px solid black;
+}
+
+.btn:hover{
+    background-color: #e3e3e3;
+}
+
+.btn_LOGIN{
+    background-color: black;
+    color: var(--white-color);
+}
+
+.btn_LOGIN:hover{
+    background-color: #575757;
+}
+
+#remember{
+    margin: 0;
+    height: 10px;
+    background-color: #d6b2ae;
+}
+
+.FAQ{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.FAQ_remember{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 12px;
+}
+
+.FAQ_forgot a{
+    color: var(--black-color);
+}
+
+.OR_container{
+    display: flex;
+}
+
+.OR{
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.line {
+    border-top: 1px solid black;
+    width: 50%;
+    margin: 20px 0;
+}
+
+
+.register{
+    width: 600px;
+    height: 400px;
+    display: flex;
+    background-color: var(--secondary-color);
+}
+
+.logo{
+    width: 180px;
+    text-align: center;
+}
+
+
+
+.account_header{
+    margin-left: 36px;
+    margin-top: 18px;
+}
+
+
+.account_container-header-register{
+    text-align: center;
+    font-size: 2.8rem;
+    color: #d62222;
+}
+
+
+
+.account_container-form--group{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 12px;
+    justify-content: space-between;
+}
+
+.form_group:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+}
+.form_group:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    width: 155px;
 }

@@ -61,7 +61,12 @@ class HomeController extends Controller
         return view('pages.offer');
     }
     public function login(){
+        $user_id = Session::get('user_id');
+        if($user_id){
+            return Redirect::to('./customer');
+        }else{
         return view('pages.login');
+        }
     }
     public function search(Request $request){
         $keywords = $request -> keywords_submit;

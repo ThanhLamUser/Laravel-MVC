@@ -53,7 +53,7 @@
               <div class="header-search">
                 <form role="form" id="form1" action="{{ URL::to('/search') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
-                <input type="text" name="keywords_submit" id="header-search" placeholder="Search for movies/cinemas...">
+                <input type="text" name="keywords_submit" id="header-search" placeholder="Search for movies...">
 
                   <button type="submit" class="header-search--svg">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -225,7 +225,7 @@
                         <div class="footer-content-2--footnote">
                             <img src="https://api-website.cinestar.com.vn/media/.renditions/wysiwyg/bocongthuong/dathongbao.png" alt="" class="footer-content-2--img"/>
 
-                            <span>CÔNG TY CỔ PHẦN GIẢI TRÍ PHÁT HÀNH PHIM – RẠP CHIẾU PHIM BRAND</span>
+                            <span>CÔNG TY CỔ PHẦN GIẢI TRÍ PHÁT HÀNH PHIM – RẠP CHIẾU PHIM CINOVA</span>
                             <span>ĐỊA CHỈ: Đường Hàn Thuyên, khu phố 6 P, Thủ Đức, Thành phố Hồ Chí Minh</span>
                             <span>GIẤY CNĐKDN SỐ: 0312742744, ĐĂNG KÝ LẦN ĐẦU NGÀY 18/04/2014, ĐĂNG KÝ THAY ĐỔI LẦN THỨ 2 NGÀY 15/09/2014, CẤP BỞI SỞ KH&ĐT TP.HCM</span>
                         </div>
