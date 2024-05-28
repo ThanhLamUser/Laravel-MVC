@@ -134,6 +134,7 @@ class CheckOutConTroller extends Controller
         session::put('seat_couple',$seat_couple);
         session::put('popcornQuantities',$popcornQuantities);
         session::put('temp_price_calc',$temp_price_calc);
+        session::put('valid_seats',$valid_seats);
 
 
         $total_price = $total_booking_price +  $total_order_price;
@@ -200,7 +201,11 @@ class CheckOutConTroller extends Controller
         $screen_movie = Session::get('screen_movie');
         $seat_single = Session::get('seat_single');
         $seat_couple = Session::get('seat_couple');
+        $valid_seats = Session::get('valid_seats');
 
+        DB::table('tbl_seat')->whereIn('seat_id', $valid_seats)->update([
+            'seat_status' => 'selected'
+        ]);
         $booking = DB::table('tbl_booking')->where('booking_id', $bookingId)->get();
         // $movieDetails = DB::table('tbl_movie')->where('movie_id', $movieid)->get();
         $payment_status = DB::table('tbl_payment')->where('booking_id', $bookingId)->where('payment_status', 'Success')->get();
@@ -226,7 +231,8 @@ class CheckOutConTroller extends Controller
             'time_movie' =>$time_movie,
             'screen_movie' => $screen_movie,
             'seat_single' =>$seat_single,
-            'seat_couple' =>$seat_couple
+            'seat_couple' =>$seat_couple,
+            'valid_seats' =>$valid_seats
         ]);
     }
     }

@@ -12,7 +12,7 @@
                 <th>Date</th>
                 <th>Method</th>
                 <th>Status</th>
-                <th>Details</th>
+                <th>Booked ID</th>
             </tr>
             @foreach ($list_payment as $key=>$payment)
             <tr>
