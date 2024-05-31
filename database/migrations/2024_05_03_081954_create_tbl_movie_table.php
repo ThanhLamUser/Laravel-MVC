@@ -24,7 +24,9 @@ return new class extends Migration
             $table->text('movie_desc');
             $table->integer('movie_status');
             $table->text('movie_iframe');
+            $table->text('movie_poster')->nullable();
             $table->timestamps();
+
         });
     }
 
