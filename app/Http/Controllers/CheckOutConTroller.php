@@ -173,7 +173,10 @@ class CheckOutConTroller extends Controller
         $data['user_phone'] = $request -> user_phone;
         $data['user_isguest'] = $request -> user_isguest;
         $user_id = DB::table('tbl_user')->insertGetId($data);
-
+        $email = $request-> user_email;
+        Session::put('user_email', $email);
+        $userName = $request-> user_name;
+        Session::put('user_name', $userName);
         $booking_id = Session::get('booking_id');
         // Cập nhật user_id cho bảng tbl_booking
         DB::table('tbl_booking')

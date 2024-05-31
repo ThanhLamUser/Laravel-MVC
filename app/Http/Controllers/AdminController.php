@@ -21,7 +21,12 @@ class AdminController extends Controller
         }
     }
     public function index(){
-        return view('admin_login');
+        $admin_id = Session::get('admin_id');
+        if($admin_id){
+            return Redirect::to('./dashboard');
+        }else{
+            return view('admin_login');
+        }
     }
     public function show_dashboard(){
         $this ->AuthLogin();

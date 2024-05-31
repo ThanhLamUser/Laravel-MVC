@@ -157,44 +157,41 @@ class PaymentController extends Controller
 
         if ($signature === $expectedSignature) {
             $paymentId = Session::get('payment_id');
-            $userId = Session::get('user_id'); // Assuming you have user_id stored in session
-
-            if (!$userId) {
-                return redirect()->route('home')->with('error', 'User ID not found in session.');
+            $userId = Session::get('user_id');
+            $email = Session::get('user_email'); // Lấy email từ session
+            $userName = Session::get('user_name');
+            // Kiểm tra nếu user_id tồn tại
+            if ($userId) {
+                $user = DB::table('tbl_user')->where('user_id', $userId)->first();
+            } else {
+                // Tạo một đối tượng user giả định để chứa email của người dùng vãng lai
+                $user = (object) ['user_email' => $email, 'user_name' => $userName];
             }
 
-            // Truy xuất thông tin người dùng từ cơ sở dữ liệu
-            $user = DB::table('tbl_user')->where('user_id', $userId)->first();
-
-            if (!$user) {
-                return redirect()->route('home')->with('error', 'User not found.');
-            }
-
-            $orderDetails = "TICKET ID: " . $request->input('orderId') . ", Amount: " . $request->input('amount'); // Customize as needed
+            $orderDetails = "TICKET ID: " . $request->input('orderId') . ", Amount: " . $request->input('amount');
 
             if ($request->input('resultCode') == 0) {
-                // Thanh toán thành công
                 DB::table('tbl_payment')->where('payment_id', $paymentId)->update([
                     'payment_status' => 'Success'
                 ]);
-                // Gửi email xác nhận
+
                 $bookingId = Session::get('booking_id');
                 DB::table('tbl_booking')->where('booking_id', $bookingId)->update([
                     'ticketbooked_id' => $request->input('orderId')
                 ]);
+
                 Mail::to($user->user_email)->send(new PaymentSuccess($user, $orderDetails));
 
                 return redirect()->route('ticket')->with('success', 'Payment successful.');
             } else {
-                // Thanh toán thất bại
                 DB::table('tbl_payment')->where('payment_id', $paymentId)->update([
                     'payment_status' => 'Failed'
                 ]);
                 return redirect()->route('home')->with('error', 'Payment failed: ' . $request->input('message'));
             }
         } else {
-            // Chữ ký không hợp lệ
             return redirect()->route('home')->with('error', 'Invalid signature.');
         }
     }
+
 }

@@ -16,7 +16,7 @@
           <div class="transaction-history col l-10 m-4 c-6">
             <h1>TRANSACTION HISTORY</h1>
             @foreach ($list_payment as $key=>$list)
-            @if($list->showtime_date > now())
+            @if($list->showtime_date > now()->subDays(1))
             <div class="th-ticket ">
             @else
             <div class="th-ticket th-ticket--used">

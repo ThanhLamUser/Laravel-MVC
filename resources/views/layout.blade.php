@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ</title>
+    <link rel="icon" href="favicon.ico.png" type="image/x-icon">
     <link rel="stylesheet" href="{{asset('./public/frontend/css/main.css')}}">
     <link rel="stylesheet" href="{{asset('./public/frontend/css/responsive.css')}}">
     <link rel="stylesheet" href="{{asset('./public/frontend/css/base.css')}}">
