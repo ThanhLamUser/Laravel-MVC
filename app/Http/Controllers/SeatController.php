@@ -49,7 +49,6 @@ class SeatController extends Controller
         $roomId = $request->input('seat_room');
         $showtimeId = $request->input('seat_showtime');
         $seatStatus = $request->input('seat_status');
-
         $data = [];
         foreach ($seatNames as $seatName) {
             $seatType = 'norm'; // Mặc định là 'norm'

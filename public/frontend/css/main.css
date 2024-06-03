@@ -3329,9 +3329,7 @@ html {
   }
 
   /* Admin Pages */
-  .adm__container {
-    background-color: #edeef0;
-  }
+
 
   .adm__all-movies-page,
   .adm__bookings-page,
@@ -3432,11 +3430,11 @@ html {
     padding: 12px 40px 12px 20px;
   }
 
-  .adm__nav-bar--a svg {
+  /* .adm__nav-bar--a svg {
     width: 20px;
     height: 20px;
     margin-right: 20px;
-  }
+  } */
 
   .adm__nav-bar--block button {
     padding: 12px;

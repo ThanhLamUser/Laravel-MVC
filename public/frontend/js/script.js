@@ -477,21 +477,22 @@ function transfer_root(path) {
 
 }
 {
-    function PlayTrailer(){
-        var register_form = `<div class="modal">
-        <div class="modal_overlay" onclick="CloseForm()">
-        </div>
-        <div class="modal_body">
-        <iframe width="936px" height="527px" src="https://www.youtube.com/embed/J-1z1nQGS_k?si=l7hLBlAsPaf8jF-E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-       </div>
-        </div>`;
-        document.getElementById('login_register_form').innerHTML= register_form;
+    function PlayTrailer(id) {
+        var register_form = `
+            <div class="modal">
+                <div class="modal_overlay" onclick="CloseForm()"></div>
+                <div class="modal_body">
+                    <iframe width="936px" height="527px" src="${id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>`;
+        document.getElementById('login_register_form').innerHTML = register_form;
     }
 
     function CloseForm() {
-        var modalOverlay = document.querySelector('.modal_overlay');
-        var modal = modalOverlay.closest('.modal');
-        modal.style.display = 'none';
+        var modal = document.querySelector('.modal');
+        if (modal) {
+            modal.remove();
+        }
     }
 }
 

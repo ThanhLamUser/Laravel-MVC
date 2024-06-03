@@ -99,7 +99,9 @@ function confirmDelete(url) {
         window.location.href = url;
     }
 }
-
+function showAlert() {
+    alert("Không thể xóa vì xuất chiếu đang hoạt động");
+}
 // function displayFileName() {
 //     var fileInput = document.getElementById('drag-n-drop');
 //     var fileNameDisplay = document.getElementById('file-name-display');
@@ -120,6 +122,7 @@ function confirmDelete(url) {
 //         imgView.innerHTML = '<span>Drag and drop or click <br>here to upload image.</span>';
 //     }
 // }
+
 function displayFileName() {
     var fileInput = document.getElementById('drag-n-drop');
     var fileNameDisplay = document.getElementById('file-name-display');

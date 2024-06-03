@@ -9,6 +9,7 @@
               <div>
                 <button class="account-details"  onclick="transfer('customer')">ACCOUNT DETAILS</button>
                 <button class="user-buttons--active my-tickets">MY TICKETS</button>
+                <button class="my-tickets" onclick="transfer('reset')" >RESET PASSWORD</button>
               </div>
             </div>
           </div>

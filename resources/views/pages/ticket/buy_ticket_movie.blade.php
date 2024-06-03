@@ -319,11 +319,11 @@
                                         ?>
                                         <li class="movie-info--hours-list">
                                             <button value="2D - Subtitles" data-value1="{{$showtime->room_id }}"  data-value5="{{ $showtime->room_name }}"
-                                                data-value2="{{ $convertedTime }} " class="movie-info--hours-option"
+                                                data-value2="{{ $convertedTime }} " class="movie-info--hours-option selected"
                                                 id="movie-info--hours-option{{ $showtime->showtime_id }}"
                                                 data-value3="yesterday"
                                                 data-value4="{{ $showtime->showtime_id }}"
-                                                onclick="toggleFocusMFH(this), updateSticky('movie-info--hours-option{{ $showtime->showtime_id }}',toggleClick()),toggleClickSEAT({{ $showtime->showtime_id }},{{ $showtime->room_id }})">{{ $convertedTime }}
+                                                {{-- onclick="toggleFocusMFH(this), updateSticky('movie-info--hours-option{{ $showtime->showtime_id }}',toggleClick()),toggleClickSEAT({{ $showtime->showtime_id }},{{ $showtime->room_id }})"--}}>{{ $convertedTime }}
                                             </button>
                                         </li>
                                     @endif

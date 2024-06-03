@@ -40,8 +40,14 @@ Route::get('/payment/callback', [PaymentController::class, 'handleCallback'])->n
 Route::post('/save-user','App\Http\Controllers\UserController@save_user');
 Route::get('/logout','App\Http\Controllers\UserController@logout');
 Route::post('/login-account','App\Http\Controllers\UserController@login_account');
+Route::post('/update-customer/{user_id}','App\Http\Controllers\UserController@updateCustomer');
 Route::get('/customer','App\Http\Controllers\UserController@customer');
 Route::get('/my-tickets','App\Http\Controllers\UserController@my_tickets');
+Route::get('/forgot','App\Http\Controllers\UserController@forgot')->name('forgot');
+Route::post('/forgot-password','App\Http\Controllers\UserController@forgot_password');
+Route::get('/reset','App\Http\Controllers\UserController@reset')->name('reset');
+Route::post('/reset-password','App\Http\Controllers\UserController@changePassword');
+
 
 
 
@@ -99,7 +105,7 @@ Route::post('/save-popcorndrink-list','App\Http\Controllers\PopcorndrinkControll
 Route::get('/add-seat','App\Http\Controllers\SeatController@add_seat');
 Route::get('/list-seat','App\Http\Controllers\SeatController@list_seat');
 Route::get('/delete-seat/{seat_id}','App\Http\Controllers\SeatController@delete_seat');
-Route::post('/save-seat-list','App\Http\Controllers\SeatController@save_seat_list');
+// Route::post('/save-seat-list','App\Http\Controllers\SeatController@save_seat_list');
 
 //Ticket
 

@@ -17,7 +17,7 @@
                                 {{ csrf_field() }}
                                 <div class="account_container-form--group-login">
                                     <label for="email">Email</label>
-                                    <input type="text" id="email" name="user_email" onchange="validateEmailLogin()">
+                                    <input type="text" id="email" name="user_email" onchange="validateEmailLogin()" required>
                                     <span id="emailError" class="error-message">Please enter a valid email address.</span>
                                 </div>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="img_email" viewBox="0 0 512 512">
@@ -26,7 +26,7 @@
 
                                 <div class="account_container-form--group-login">
                                     <label for="Password">Password</label>
-                                    <input type="password" id="Password" name="user_password" onchange="validatePasswordLogin()">
+                                    <input type="password" id="Password" name="user_password" onchange="validatePasswordLogin()" required>
                                     <span id="passwordError" class="error-message">Password cannot be empty.</span>
                                 </div>
                                 {{-- <svg xmlns="http://www.w3.org/2000/svg" class="img_lock" viewBox="0 0 448 512">
@@ -38,7 +38,7 @@
                                         <label>Remember Me</label>
                                     </div>
                                     <div class="FAQ_forgot">
-                                        <a href="">Forgot Password?</a>
+                                        <a href="forgot">Forgot Password?</a>
                                     </div>
                                 </div>
                                 <div class="button_container ">

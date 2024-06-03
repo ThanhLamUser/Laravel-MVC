@@ -25,7 +25,11 @@
                         <button onclick="transfer('{{ URL::to('/edit-showtime/'.$showtime_pro->showtime_id) }}')" id="adm__all-showtime--edit--btn" >EDIT</button>
                     </th>
                     <th>
+                        @if($showtime_pro->showtime_date < now())
                         <button onclick="confirmDelete('{{ URL::to('/delete-showtime/'.$showtime_pro->showtime_id) }}')" id="adm__all-showtime--del--btn">DELETE</button>
+                        @else
+                        <button onclick="showAlert()" id="adm__all-showtime--del--btn">DELETE</button>
+                        @endif
                     </th>
                 </tr>
             @endforeach

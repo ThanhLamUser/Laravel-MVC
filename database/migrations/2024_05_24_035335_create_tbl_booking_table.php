@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('booking_status');
             $table->integer('booking_total');
             $table->date('booking_date');
+            $table->integer('ticketbooked_id')->nullable();
             $table->timestamps();
         });
     }

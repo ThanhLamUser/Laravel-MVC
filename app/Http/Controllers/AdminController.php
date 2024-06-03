@@ -33,7 +33,7 @@ class AdminController extends Controller
         $list_movie = DB::table('tbl_movie')->get();
         $list_movie_count = $list_movie->count();
 
-        $list_user = DB::table('tbl_user')->where('user_isguest',1)->get();
+        $list_user = DB::table('tbl_user')->whereNotNull('user_password')->get();
         $list_user_count = $list_user->count();
 
         $total_payment = DB::table('tbl_payment')->where('payment_status','Success')->sum('payment_total');

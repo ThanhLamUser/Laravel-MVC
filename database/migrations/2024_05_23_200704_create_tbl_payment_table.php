@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('order_id')->nullable();
             $table->integer('booking_id');
             $table->string('payment_method');
-            $table->integer('payment_status');
+            $table->string('payment_status');
             $table->integer('payment_total');
             $table->timestamps();
         });

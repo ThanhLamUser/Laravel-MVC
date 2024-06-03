@@ -15,8 +15,9 @@ return new class extends Migration
             $table->increments('seat_id');
             $table->integer('room_id');
             $table->integer('showtime_id');
+            $table->string('seat_name');
             $table->string('seat_type');
-            $table->integer('seat_status');
+            $table->string('seat_status');
             $table->timestamps();
         });
     }

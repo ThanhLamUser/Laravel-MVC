@@ -69,7 +69,14 @@ class HomeController extends Controller
         }
     }
     public function register(){
-        return view('pages.register');
+        $user_id = Session::get('user_id');
+        if($user_id){
+            return Redirect::to('./customer');
+        }else{
+            return view('pages.register');
+        }
+        // $user_id = DB::table('tbl_user')->whereNotNull('user_password');
+        // return view('pages.register')->with('user_id',$user_id);
     }
     public function search(Request $request){
         $keywords = $request -> keywords_submit;

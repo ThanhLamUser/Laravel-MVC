@@ -114,7 +114,10 @@
             </div>
           </div>
         </div>
+        <div id="login_register_form"></div>
+
     </header>
+
     @yield('content')
 
     <footer class="footer-1" >

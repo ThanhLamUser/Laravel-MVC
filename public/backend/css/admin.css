@@ -1,6 +1,6 @@
 
 .adm__container {
-    background-color: #edeef0;
+    background-color: #f7f7f7;
   }
 
   .adm__all-movies-page,
@@ -59,6 +59,7 @@
     margin: 8px 0;
     border-radius: 15px;
     transition: 0.2s ease;
+    overflow: hidden;
   }
 
   .adm__nav-bar--li.active {
@@ -83,7 +84,7 @@
     border-radius: 10px;
   }
 
-  .adm__nav-bar--li:hover a{
+  .adm__nav-bar--li:hover div, .adm__nav-bar--li:hover a {
     color: white;
   }
 
@@ -1166,4 +1167,47 @@
     color: #a94442;
     background-color: #f2dede;
     border-color: #ebccd1;
+  }
+  .adm__nav-bar--li svg#a, .adm__nav-bar--li svg#b {
+    width: 12px;
+    height: 12px;
+    transition: 0.2s ease;
+    margin-left: 12px;
+  }
+
+  .mini-ul {
+    color: transparent;
+    max-height: 0;
+    transition: 0.5s ease;
+    padding-left: 0;
+    overflow: hidden;
+  }
+
+  .mini-li {
+    color: transparent;
+    max-height: 0;
+    transition: 0.3s ease;
+  }
+
+  .mini-li a {
+    color: transparent;
+    text-decoration: none;
+    display: block;
+    font-size: 1.3rem;
+    padding: 6px 0px 6px 40px;
+  }
+
+  .mini-li:hover {
+    filter: brightness(0.9);
+    background-color: #d62222;
+  }
+
+  .adm__nav-bar--li.active .mini-ul,
+  .adm__nav-bar--li.active .mini-li {
+    display: block;
+    max-height: 200px;
+  }
+
+  .adm__nav-bar--li.active svg#a, .adm__nav-bar--li.active svg#b {
+    rotate: 90deg;
   }

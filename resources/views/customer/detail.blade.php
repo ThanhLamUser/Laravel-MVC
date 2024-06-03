@@ -9,13 +9,16 @@
               <div>
                 <button class="user-buttons--active account-details">ACCOUNT DETAILS</button>
                 <button class="my-tickets" onclick="transfer('my-tickets')">MY TICKETS</button>
+                <button class="my-tickets" onclick="transfer('reset')" >RESET PASSWORD</button>
               </div>
             </div>
           </div>
 
           <div class="account-details-container col l-5 m-4 c-6">
+            @foreach ($user as $key=>$user_pro)
+            <form role="form" id="form1" action="{{ URL::to('/update-customer/' . $user_pro->user_id) }}" method="post" enctype="multipart/form-data">
+                {{ csrf_field() }}
                 <h1>ACCOUNT DETAILS</h1>
-                @foreach ($user as $key=>$user_pro)
                 <div class="ad-img-barcode">
                   <div class="ad-img">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -28,26 +31,24 @@
                     <p class="ad-barcode--num">000000000{{ $user_pro->user_id }}</p>
                   </div>
                 </div>
-
                 <div class="ad-basic-info">
                   <h2>BASIC INFO</h2>
                   <p>Name<span>*</span></p>
-                  <input type="text" name="" id="" value="{{ $user_pro->user_name}}">
+                  <input type="text" name="user_name" id="" value="{{ $user_pro->user_name}}">
                   <p>Phone Number<span>*</span></p>
-                  <input type="text" name="" id="" value="{{ $user_pro->user_phone}}">
+                  <input type="text" name="user_phone" id="" value="{{ $user_pro->user_phone}}">
                   <p>E-mail<span>*</span></p>
-                  <input type="text" name="" id="" value="{{ $user_pro->user_email}}">
-                  <p>Address</p>
-                  <input type="text" name="" id="">
+                  <input type="text" name="user_email" id="" value="{{ $user_pro->user_email}}">
                 </div>
                 @endforeach
           </div>
 
           <div class="account-details-buttons col l-2 m-4 c-6">
-            <button>Cancel</button>
-            <input type="submit" name="" id="" value="Save">
+            <button type="button" onclick="window.location.href='{{ URL::to('/customer') }}'">Cancel</button>
+            <input type="submit" value="Save">
           </div>
         </div>
+        </form>
     </div>
   </div>
 

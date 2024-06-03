@@ -177,7 +177,8 @@ class PaymentController extends Controller
 
                 $bookingId = Session::get('booking_id');
                 DB::table('tbl_booking')->where('booking_id', $bookingId)->update([
-                    'ticketbooked_id' => $request->input('orderId')
+                    'ticketbooked_id' => $request->input('orderId'),
+                    'booking_status' => 'Success'
                 ]);
 
                 Mail::to($user->user_email)->send(new PaymentSuccess($user, $orderDetails));
