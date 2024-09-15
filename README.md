@@ -1,2 +1,1 @@
-
-[Cinova](Cinova.id.vn)
+cinova.id.vn
